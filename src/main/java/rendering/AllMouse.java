@@ -2,6 +2,7 @@ package main.java.rendering;
 
 import main.java.CaveGame;
 import main.java.constants.*;
+import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
@@ -10,28 +11,29 @@ import org.lwjgl.util.glu.GLU;
 public class AllMouse
 {
 
-    static double tempx1 = PrepDisplay.displayWidth, tempy1 = PrepDisplay.displayHeight;
+    static double tempx1 = PrepDisplay.displayWidth/2, tempy1 = PrepDisplay.displayHeight/2;
     static float yAngle = 90, zAngle = 0;
+
+    // Press Space when running to see test cube, Only -X works for some reason
 
     public static void look() {
         if(Mouse.isGrabbed()) {
 
-            double tempx = Mouse.getX();
-            double tempy = Mouse.getY();
+            double tempx = (Mouse.getX());
+            double tempy = (Mouse.getY());
 
-            zAngle -= 0.2f * (int) (tempx1-tempx);
-            yAngle += 0.2f * (int) (tempy1-tempy);
+            zAngle -= 0.2f * (tempx1-tempx);
+            yAngle += 0.2f * (tempy1-tempy);
 
             if(yAngle < 0.1) yAngle = 0.1f;
             if(yAngle > 179.9) yAngle = 179.9f;
 
-            Mouse.setCursorPosition((int) tempx1,(int) tempy1);
+            Mouse.setCursorPosition(PrepDisplay.displayWidth/2, PrepDisplay.displayHeight/2);
 
-
-            GL11.glMatrixMode(GL11.GL_MODELVIEW);
-            GL11.glLoadIdentity();
-            GL11.glRotatef( yAngle, 0, 1, 0);
-            GL11.glTranslatef(-X.is(), -Y.is()-1.8f, -Z.is());
+            //GL11.glMatrixMode(GL11.GL_MODELVIEW);
+            //GL11.glLoadIdentity();
+            //GL11.glRotatef( yAngle, 0, 1, 0);
+            //GL11.glTranslatef(-X.is(), -Y.is()-1.8f, -Z.is());
 
 
             YLook.set((float) (Math.cos(yAngle*Math.PI/180)));
@@ -49,7 +51,6 @@ public class AllMouse
 
 
     static float sprint = 1;
-    static int g1 = 0;
     static long temp3=0;
     static int moveLength = 0;
     static int space = 0;
@@ -93,14 +94,14 @@ public class AllMouse
             GL11.glTranslatef(-X.is(), -Y.is()-1.8f, -Z.is());
         }
         if (Keyboard.isKeyDown(Keyboard.KEY_SPACE) && space==0) {
-            Y.set((float) (Y.is() + 0.01));
+            Y.set((float) (Y.is() + 0.01*sprint));
             GL11.glMatrixMode(GL11.GL_MODELVIEW);
             GL11.glLoadIdentity();
             GL11.glRotatef(zAngle, 0, 1, 0);
             GL11.glTranslatef(-X.is(), -Y.is()-1.8f, -Z.is());
         }
         if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
-            Y.set((float) (Y.is() - 0.01));
+            Y.set((float) (Y.is() - 0.01*sprint));
             GL11.glMatrixMode(GL11.GL_MODELVIEW);
             GL11.glLoadIdentity();
             GL11.glRotatef(zAngle, 0, 1, 0);

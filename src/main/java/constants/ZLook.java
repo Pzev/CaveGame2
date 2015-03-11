@@ -2,7 +2,7 @@ package main.java.constants;
 
 public class ZLook
 {
-    public static float zLook = 1.0001f;
+    public static float zLook = 0.0001f;
 
     public static float is()
     {

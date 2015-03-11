@@ -31,7 +31,7 @@ public class PrepDisplay
         GL11.glDepthFunc(GL11.GL_LEQUAL);
         GL11.glMatrixMode(GL11.GL_PROJECTION);
         GL11.glLoadIdentity();
-        GLU.gluPerspective(100, (displayWidth/displayHeight)*1.7f, .1f, 10000);
+        GLU.gluPerspective(60, (displayWidth/displayHeight)*1.7f, .1f, 10000);
         GL11.glMatrixMode(GL11.GL_MODELVIEW);
         GL11.glLoadIdentity();
         GL11.glEnable(GL11.GL_BLEND);
@@ -47,13 +47,12 @@ public class PrepDisplay
             testBlock.RenderTest(5, 64, 0);
 
 
-            AllMouse.sky(1000);
+            AllMouse.sky(100);
 
             AllMouse.move();
             AllMouse.look();
 
 
-            RenderUtils.updateView();
             Display.update();
         }
 

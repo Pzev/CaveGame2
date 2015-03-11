@@ -2,7 +2,7 @@ package main.java.constants;
 
 public class XLook
 {
-    public static float xLook = 0.0001f;
+    public static float xLook = 1.0001f;
 
     public static float is()
     {
