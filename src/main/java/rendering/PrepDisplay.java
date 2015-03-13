@@ -1,8 +1,8 @@
 package main.java.rendering;
 
-import main.java.CaveGame;
-import main.java.blocks.CGTestOnly;
-import main.java.constants.*;
+import static main.java.constants.LocationVars.*;
+
+import main.java.definers.Block;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
@@ -38,13 +38,14 @@ public class PrepDisplay
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         GL11.glMatrixMode(GL11.GL_MODELVIEW);
         GL11.glLoadIdentity();
-        GLU.gluLookAt(X.is(), Y.is()+1.8f, Z.is(), X.is()+XLook.is(), Y.is()+1.8f+YLook.is(), Z.is()+ZLook.is(), 0, 1, 0);
+        GLU.gluLookAt(xCord, yCord + 1.8f, zCord, xCord + xLook, yCord + 1.8f + yLook, zCord + zLook, 0, 1, 0);
 
         while (!Display.isCloseRequested()) {
             GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 
-            CGTestOnly testBlock = new CGTestOnly();
-            testBlock.RenderTest(5, 64, 0);
+            Block testB1 = new Block();
+            testB1.setColor(0.9f, 0.9f, 0.2f, 1.0f);
+            testB1.renderBase(5, 64, 0);
 
 
             AllMouse.sky(100);
