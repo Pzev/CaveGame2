@@ -1,12 +1,13 @@
 package main.java;
 
+import main.java.constants.BlockInformation;
+import main.java.definers.Block;
 import main.java.rendering.PrepDisplay;
+
+import java.util.*;
 
 public class CaveGame
 {
-    public static float xLook = 1.0001f, yLook=0.0001f, zLook=0.0001f;
-
-
     public static void main(String args[])
     {
         preInit();
