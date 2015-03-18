@@ -10,4 +10,5 @@ public class LocationVars
     public static float yLook = 63.0901f;
     public static float zLook = 0.5001f;
 
+    public static int renderDistance = 4;
 }
