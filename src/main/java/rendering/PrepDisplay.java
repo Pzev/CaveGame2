@@ -2,6 +2,7 @@ package main.java.rendering;
 
 import static main.java.constants.LocationVars.*;
 
+import main.java.definers.Block;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
@@ -38,12 +39,14 @@ public class PrepDisplay
         GL11.glMatrixMode(GL11.GL_MODELVIEW);
         GL11.glLoadIdentity();
         GLU.gluLookAt(xCord, yCord + 1.8f, zCord, xCord + xLook, yCord + 1.8f + yLook, zCord + zLook, 0, 1, 0);
-        RenderBlocks.PrepBlocks();
 
         while (!Display.isCloseRequested()) {
             GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 
-            RenderBlocks.AllBlocks();
+            Block testB1 = new Block();
+            testB1.setColor(0.9f, 0.9f, 0.2f, 1.0f);
+            testB1.renderBase(5, 64, 0);
+
 
             AllMouse.sky(100);
 

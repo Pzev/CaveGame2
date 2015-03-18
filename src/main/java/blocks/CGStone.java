@@ -1,14 +1,14 @@
 package main.java.blocks;
 
 import main.java.definers.Block;
-import main.java.definers.CGBlock;
 
-public class CGStone extends CGBlock
+public class CGStone
 {
-    public CGStone()
+    public static void CGStone()
     {
-        renderSidesSame(true);
-        setColor(1f, 1f, 1f, 1f);
+        Block testB1 = new Block();
+        testB1.setColor(0.9f, 0.9f, 0.2f, 1.0f);
+        testB1.renderBase(5, 64, 0);
     }
 
 }
