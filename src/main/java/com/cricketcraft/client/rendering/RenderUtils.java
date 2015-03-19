@@ -1,9 +1,9 @@
-package main.java.rendering;
+package com.cricketcraft.client.rendering;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
 
-import static main.java.constants.LocationVars.*;
+import static com.cricketcraft.core.utils.constants.LocationVars.*;
 
 public class RenderUtils
 {

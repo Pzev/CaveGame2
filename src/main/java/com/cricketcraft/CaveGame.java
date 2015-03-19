@@ -1,13 +1,12 @@
-package main.java;
+package com.cricketcraft;
 
-import main.java.constants.BlockInformation;
-import main.java.definers.Block;
-import main.java.rendering.PrepDisplay;
-
-import java.util.*;
+import com.cricketcraft.client.rendering.PrepDisplay;
+import com.cricketcraft.core.core.World;
 
 public class CaveGame
 {
+    protected World theWorld = new World();
+
     public static void main(String args[])
     {
         preInit();
@@ -15,11 +14,9 @@ public class CaveGame
         postInit();
     }
 
-    public static void preInit()
-    {
+    public static void preInit() {
         PrepDisplay displayPrep = new PrepDisplay();
         displayPrep.prepDisplay();
-
 
     }
 
@@ -33,5 +30,9 @@ public class CaveGame
     {
 
 
+    }
+
+    public static World getWorld(){
+        return theWorld;
     }
 }

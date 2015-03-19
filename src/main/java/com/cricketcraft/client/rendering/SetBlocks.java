@@ -1,6 +1,4 @@
-package main.java.rendering;
-
-import main.java.constants.BlockInformation;
+package com.cricketcraft.client.rendering;
 
 public class SetBlocks
 {

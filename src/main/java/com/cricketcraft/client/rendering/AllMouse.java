@@ -1,18 +1,13 @@
-package main.java.rendering;
+package com.cricketcraft.client.rendering;
 
-import main.java.CaveGame;
-import main.java.constants.*;
-import org.lwjgl.Sys;
+import com.cricketcraft.CaveGame;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
 
-import static main.java.constants.LocationVars.*;
-
 public class AllMouse
 {
-
     static double tempx1 = PrepDisplay.displayWidth/2, tempy1 = PrepDisplay.displayHeight/2;
     static float yAngle = 90, zAngle = 0;
 
@@ -30,9 +25,9 @@ public class AllMouse
 
             Mouse.setCursorPosition(PrepDisplay.displayWidth/2, PrepDisplay.displayHeight/2);
 
-            yLook = (float) (Math.cos(yAngle*Math.PI/180));
-            xLook = (float) (Math.sin(yAngle*Math.PI/180)*Math.cos(zAngle*Math.PI/180));
-            zLook = (float) (Math.sin(yAngle*Math.PI/180)*Math.sin(zAngle*Math.PI/180));
+            CaveGame.getWorld().thePlayer.setEyeY((float) (Math.cos(yAngle * Math.PI / 180)));
+            CaveGame.getWorld().thePlayer.setEyeX((float) (Math.sin(yAngle * Math.PI / 180) * Math.cos(zAngle * Math.PI / 180)));
+            CaveGame.getWorld().thePlayer.setEyeZ((float) (Math.sin(yAngle * Math.PI / 180) * Math.sin(zAngle * Math.PI / 180)));
 
             GL11.glMatrixMode(GL11.GL_MODELVIEW);
             GL11.glLoadIdentity();
@@ -54,12 +49,12 @@ public class AllMouse
         moveLength = (int) (System.nanoTime()/10000000 - temp3);
 
         if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
-            xCord += Math.cos(zAngle*Math.PI/180)*sprint*moveLength;
-            zCord += Math.sin(zAngle*Math.PI/180)*sprint*moveLength;
+            CaveGame.getWorld().thePlayer.setxCoord((float) (CaveGame.getWorld().thePlayer.getxCoord() + Math.cos(zAngle * Math.PI / 180) * sprint * moveLength));
+            CaveGame.getWorld().thePlayer.setzCoord((float) (CaveGame.getWorld().thePlayer.getzCoord() + Math.cos(zAngle * Math.PI / 180) * sprint * moveLength));
             GL11.glMatrixMode(GL11.GL_MODELVIEW);
             GL11.glLoadIdentity();
             GL11.glRotatef(zAngle, 0, 1, 0);
-            GL11.glTranslatef(-xCord, -yCord-1.8f, -zCord);
+            GL11.glTranslatef(-CaveGame.getWorld().thePlayer.getxCoord(), -CaveGame.getWorld().thePlayer.getyCoord() -1.8F, -CaveGame.getWorld().thePlayer.getzCoord());
         }
         if (Keyboard.isKeyDown(Keyboard.KEY_S)) {
             xCord -= Math.cos(zAngle*Math.PI/180)*sprint*moveLength;

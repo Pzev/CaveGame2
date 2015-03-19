@@ -1,6 +1,6 @@
-package main.java.constants;
+package com.cricketcraft.core.utils.constants;
 
-import main.java.definers.Block;
+import com.cricketcraft.core.blocks.Block;
 
 import java.util.ArrayList;
 import java.util.List;

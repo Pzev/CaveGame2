@@ -1,6 +1,6 @@
-package main.java.rendering;
+package com.cricketcraft.client.rendering;
 
-import static main.java.constants.LocationVars.*;
+import static com.cricketcraft.core.utils.constants.LocationVars.*;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
@@ -38,12 +38,12 @@ public class PrepDisplay
         GL11.glMatrixMode(GL11.GL_MODELVIEW);
         GL11.glLoadIdentity();
         GLU.gluLookAt(xCord, yCord + 1.8f, zCord, xCord + xLook, yCord + 1.8f + yLook, zCord + zLook, 0, 1, 0);
-        RenderBlocks.PrepBlocks();
+        RenderBlock.PrepBlocks();
 
         while (!Display.isCloseRequested()) {
             GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 
-            RenderBlocks.AllBlocks();
+            RenderBlock.AllBlocks();
 
             AllMouse.sky(100);
 
