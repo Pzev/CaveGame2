@@ -37,8 +37,10 @@ public class RenderBlocks
                 {
                     block.renderXP();
                 }
+
             }
 
+            /*
             else if(BlockInfo.get(i-2048).blockX() == 1)
             {
                 block.renderXN();
@@ -59,7 +61,7 @@ public class RenderBlocks
             {
                 block.renderZN();
             }
-
+            **/
 
 
 
