@@ -8,7 +8,6 @@ import java.util.List;
 
 public class BlockInformation
 {
-    public static ArrayList<Block> BlockInfo = new ArrayList<Block>();
     public static ArrayList<Chunk> ChunkInfo = new ArrayList<Chunk>();
 
 }

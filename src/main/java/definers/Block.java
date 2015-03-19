@@ -5,16 +5,16 @@ import static main.java.constants.LocationVars.*;
 
 public class Block {
 
-    private static boolean renderSidesSame = true;
-    private static boolean useTexture = false;
+    private boolean renderSidesSame = true;
+    private boolean useTexture = false;
     private int blockX, blockY, blockZ;
     public float r = 1, g = 1, b = 1, a = 1;
 
-    public static void renderSidesSame(boolean renderSides) {
+    public void renderSidesSame(boolean renderSides) {
         renderSidesSame = renderSides;
     }
 
-    public static void useTexture(boolean use)
+    public void useTexture(boolean use)
     {
         useTexture = use;
     }
@@ -27,7 +27,7 @@ public class Block {
         a = a2;
     }
 
-    public static void textureIs(String path)
+    public void textureIs(String path)
     {
         GL11.glColor4f(0, 0, 0, 0);
 
@@ -177,7 +177,7 @@ public class Block {
         GL11.glEnd();
     }
 
-    public static void laglessRender()
+    public void laglessRender()
     {
 
         // Redo ALL of the lagless render except basic side checking logic

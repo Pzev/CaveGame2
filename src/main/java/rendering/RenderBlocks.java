@@ -1,6 +1,7 @@
 package main.java.rendering;
 
 import main.java.blocks.CGStone;
+
 import static main.java.constants.BlockInformation.*;
 
 import main.java.constants.BlockInformation;
@@ -15,15 +16,10 @@ public class RenderBlocks
 {
     public static void AllBlocks()
     {
-        int i = 0;
-        Iterator it1 = ChunkInfo.iterator();
-        while(it1.hasNext())
+        for (Chunk chunk : ChunkInfo)
         {
-            Chunk chunk1 = ChunkInfo.get(i);
-            i++;
-            for(int p = 0; p < 32768; p++)
+            for (Block block : chunk.BlockInfo)
             {
-                Block block = BlockInfo.get(p);
                 block.renderBase();
             }
         }
