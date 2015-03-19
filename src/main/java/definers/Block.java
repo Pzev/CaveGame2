@@ -7,8 +7,8 @@ public class Block {
 
     private static boolean renderSidesSame = true;
     private static boolean useTexture = false;
-    public static int blockX, blockY, blockZ;
-    public static float r = 1, g = 1, b = 1, a = 1;
+    private int blockX, blockY, blockZ;
+    public float r = 1, g = 1, b = 1, a = 1;
 
     public static void renderSidesSame(boolean renderSides) {
         renderSidesSame = renderSides;
@@ -19,7 +19,7 @@ public class Block {
         useTexture = use;
     }
 
-    public static void colorIs(float r2, float g2, float b2, float a2)
+    public void colorIs(float r2, float g2, float b2, float a2)
     {
         r = r2;
         g = g2;
@@ -33,29 +33,29 @@ public class Block {
 
     }
 
-    public static void blockSetAt(int x, int y, int z)
+    public void blockSetAt(int x, int y, int z)
     {
         blockX = x;
         blockY = y;
         blockZ = z;
     }
 
-    public static int blockX()
+    public int blockX()
     {
         return blockX;
     }
 
-    public static int blockY()
+    public int blockY()
     {
         return blockY;
     }
 
-    public static int blockZ()
+    public int blockZ()
     {
         return blockZ;
     }
 
-    public static void renderBase() {
+    public void renderBase() {
 
         GL11.glColor4f(r, g, b, a);
 
@@ -97,6 +97,84 @@ public class Block {
         GL11.glVertex3f(blockX + 1, blockY, blockZ);
         GL11.glEnd();
 
+    }
+
+    public void renderXP()
+    {
+        GL11.glColor4f(r, g, b, a);
+
+        // X+ Side
+        GL11.glBegin(GL11.GL_QUADS);
+        GL11.glVertex3f(blockX + 1, blockY, blockZ + 1);
+        GL11.glVertex3f(blockX + 1, blockY + 1, blockZ + 1);
+        GL11.glVertex3f(blockX + 1, blockY + 1, blockZ);
+        GL11.glVertex3f(blockX + 1, blockY, blockZ);
+        GL11.glEnd();
+    }
+
+    public void renderXN()
+    {
+        GL11.glColor4f(r, g, b, a);
+
+        // X- Side
+        GL11.glBegin(GL11.GL_QUADS);
+        GL11.glVertex3f(blockX, blockY, blockZ + 1);
+        GL11.glVertex3f(blockX, blockY + 1, blockZ + 1);
+        GL11.glVertex3f(blockX, blockY + 1, blockZ);
+        GL11.glVertex3f(blockX, blockY, blockZ);
+        GL11.glEnd();
+    }
+
+    public void renderYP()
+    {
+        GL11.glColor4f(r, g, b, a);
+
+        // Y+ Side
+        GL11.glBegin(GL11.GL_QUADS);
+        GL11.glVertex3f(blockX + 1, blockY + 1, blockZ + 1);
+        GL11.glVertex3f(blockX, blockY + 1, blockZ + 1);
+        GL11.glVertex3f(blockX, blockY + 1, blockZ);
+        GL11.glVertex3f(blockX + 1, blockY + 1, blockZ);
+        GL11.glEnd();
+    }
+
+    public void renderYN()
+    {
+        GL11.glColor4f(r, g, b, a);
+
+        // Y- Side
+        GL11.glBegin(GL11.GL_QUADS);
+        GL11.glVertex3f(blockX + 1, blockY, blockZ + 1);
+        GL11.glVertex3f(blockX, blockY, blockZ + 1);
+        GL11.glVertex3f(blockX, blockY, blockZ);
+        GL11.glVertex3f(blockX + 1, blockY, blockZ);
+        GL11.glEnd();
+    }
+
+    public void renderZP()
+    {
+        GL11.glColor4f(r, g, b, a);
+
+        // Z+ Side
+        GL11.glBegin(GL11.GL_QUADS);
+        GL11.glVertex3f(blockX + 1, blockY + 1, blockZ + 1);
+        GL11.glVertex3f(blockX, blockY + 1, blockZ + 1);
+        GL11.glVertex3f(blockX, blockY, blockZ + 1);
+        GL11.glVertex3f(blockX + 1, blockY, blockZ + 1);
+        GL11.glEnd();
+    }
+
+    public void renderZN()
+    {
+        GL11.glColor4f(r, g, b, a);
+
+        // Z- Side
+        GL11.glBegin(GL11.GL_QUADS);
+        GL11.glVertex3f(blockX + 1, blockY + 1, blockZ);
+        GL11.glVertex3f(blockX, blockY + 1, blockZ);
+        GL11.glVertex3f(blockX, blockY, blockZ);
+        GL11.glVertex3f(blockX + 1, blockY, blockZ);
+        GL11.glEnd();
     }
 
     public static void laglessRender()
