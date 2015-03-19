@@ -7,7 +7,8 @@ public class Block {
 
     private static boolean renderSidesSame = true;
     private static boolean useTexture = false;
-    private static int blockX, blockY, blockZ;
+    public static int blockX, blockY, blockZ;
+    public static float r = 1, g = 1, b = 1, a = 1;
 
     public static void renderSidesSame(boolean renderSides) {
         renderSidesSame = renderSides;
@@ -18,9 +19,12 @@ public class Block {
         useTexture = use;
     }
 
-    public static void colorIs(float r, float g, float b, float a)
+    public static void colorIs(float r2, float g2, float b2, float a2)
     {
-        GL11.glColor4f(r, g, b, a);
+        r = r2;
+        g = g2;
+        b = b2;
+        a = a2;
     }
 
     public static void textureIs(String path)
@@ -52,6 +56,9 @@ public class Block {
     }
 
     public static void renderBase() {
+
+        GL11.glColor4f(r, g, b, a);
+
         // X+ Side
         GL11.glBegin(GL11.GL_QUADS);
         GL11.glVertex3f(blockX + 1, blockY, blockZ + 1);

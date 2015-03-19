@@ -38,6 +38,8 @@ public class PrepDisplay
         GL11.glMatrixMode(GL11.GL_MODELVIEW);
         GL11.glLoadIdentity();
         GLU.gluLookAt(xCord, yCord + 1.8f, zCord, xCord + xLook, yCord + 1.8f + yLook, zCord + zLook, 0, 1, 0);
+
+        AllMouse.sky(100);
         RenderBlocks.PrepBlocks();
 
         while (!Display.isCloseRequested()) {
@@ -49,6 +51,7 @@ public class PrepDisplay
 
             AllMouse.move();
             AllMouse.look();
+
 
 
             Display.update();

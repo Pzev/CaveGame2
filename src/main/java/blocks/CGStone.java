@@ -8,7 +8,8 @@ public class CGStone extends CGBlock
     public CGStone()
     {
         renderSidesSame(true);
-        setColor(1f, 1f, 1f, 1f);
+        useTexture(false);
+        colorIs(0.5f, 0.5f, 0.5f, 1f);
     }
 
 }
