@@ -12,10 +12,11 @@ import java.util.ListIterator;
 public class RenderBlocks
 {
     public static void AllBlocks() {
+        Block[] block = BlockInfo.get(0);
 
-        for(int i = 0; i < BlockInfo.size(); i++)
+        for(int i = 0; i < 32768; i++)
         {
-            BlockInfo.get(i).renderBase();
+            block[i].renderBase();
 
         }
     }
@@ -23,22 +24,20 @@ public class RenderBlocks
     public static void PrepBlocks()
     {
         int i = 0;
+        Block[] block = new Block[32768];
         for(int x = 0; x < 16; x++)
         {
             for(int z = 0; z< 16; z++)
             {
                 for(int y = 0; y < 128; y++)
                 {
-                    Block block;
-                    Block.colorIs(0.5f, 0.5f, 0.5f, 1f);
-                    Block.blockSetAt(x, y, z);
-                    block = new Block();
+                    block[i] = new Block();
 
-                    BlockInfo.add(block);
                     i++;
                 }
             }
         }
+        BlockInfo.add(block);
         System.out.println("done");
     }
 

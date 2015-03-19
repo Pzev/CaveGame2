@@ -8,5 +8,5 @@ import java.util.List;
 
 public class BlockInformation
 {
-    public static List<Block> BlockInfo = new ArrayList<Block>(32768);
+    public static List<Block[]> BlockInfo = new ArrayList<Block[]>();
 }
