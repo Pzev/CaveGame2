@@ -3,6 +3,7 @@ Thumbs.db
 ehthumbs.db
 # Idea Folder
 /.idea
+/out
 
 # Folder config file
 Desktop.ini
