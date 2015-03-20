@@ -1,5 +1,6 @@
 package com.cricketcraft.core.entity;
 
+import com.cricketcraft.CaveGame;
 import com.cricketcraft.core.core.Chunk;
 
 public class EntityClientPlayer {
@@ -81,8 +82,8 @@ public class EntityClientPlayer {
 
     public boolean isWithinRenderDistance(int cx, int cz)
     {
-        int xLocation = (int) xCoord/16;
-        int zLocation = (int) zCoord/16;
+        int xLocation = (int) CaveGame.getWorld().thePlayer.xCoord/16;
+        int zLocation = (int) CaveGame.getWorld().thePlayer.zCoord/16;
         if((cx < xLocation + renderDistance && cx > xLocation - renderDistance) && (cz < zLocation + renderDistance && cz > zLocation - renderDistance))
         {
             return true;
@@ -95,12 +96,12 @@ public class EntityClientPlayer {
 
     public int inChunkX()
     {
-        return (int) xCoord/16;
+        return (int) CaveGame.getWorld().thePlayer.xCoord/16;
     }
 
     public int inChunkZ()
     {
-        return (int) zCoord/16;
+        return (int) CaveGame.getWorld().thePlayer.zCoord/16;
     }
 
 }

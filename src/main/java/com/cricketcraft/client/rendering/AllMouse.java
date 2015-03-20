@@ -50,7 +50,7 @@ public class AllMouse
 
         if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
             CaveGame.getWorld().thePlayer.setxCoord((float) (CaveGame.getWorld().thePlayer.getxCoord() + Math.cos(zAngle * Math.PI / 180) * sprint * moveLength));
-            CaveGame.getWorld().thePlayer.setzCoord((float) (CaveGame.getWorld().thePlayer.getzCoord() + Math.cos(zAngle * Math.PI / 180) * sprint * moveLength));
+            CaveGame.getWorld().thePlayer.setzCoord((float) (CaveGame.getWorld().thePlayer.getzCoord() + Math.sin(zAngle * Math.PI / 180) * sprint * moveLength));
             GL11.glMatrixMode(GL11.GL_MODELVIEW);
             GL11.glLoadIdentity();
             GL11.glRotatef(zAngle, 0, 1, 0);
@@ -126,7 +126,7 @@ public class AllMouse
     public static void sky(int dist) {
 
         GL11.glColor4f(0.196f, 0.6f, 0.8f, 1.0f); // blue
-        short r = (short) (dist*16);
+        short r = (short) ((CaveGame.getWorld().thePlayer.getRenderDistance() * 16) + 16);
 
         float thexp = CaveGame.getWorld().thePlayer.getxCoord() + r;
         float theyp = CaveGame.getWorld().thePlayer.getyCoord() + 256;
