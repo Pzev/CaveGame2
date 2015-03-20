@@ -40,27 +40,20 @@ public class RenderWorld {
         {
             for (int cz = zMin; cz < (zMin + (CaveGame.getWorld().thePlayer.getRenderDistance() * 2) + 2); cz++)
             {
-                    Chunk chunk = new Chunk();
-                    for(int x = 0; x < 16; x++)
-                    {
-                        for(int z = 0; z< 16; z++)
-                        {
-                            for(int y = 0; y < 7; y++)
-                            {
-                                if(y == 0 || y == 1 || y == 2)
-                                {
+                Chunk chunk = ChunkInfo[cx][cz];
+                if(chunk == null) {
+                    for (int x = 0; x < 16; x++) {
+                        for (int z = 0; z < 16; z++) {
+                            for (int y = 0; y < 7; y++) {
+                                if (y == 0 || y == 1 || y == 2) {
                                     Block tempBlock = new Block(Material.STONE);
                                     tempBlock.setPosition(x + (cx * 16), y, z + (cz * 16));
                                     chunk.addBlock(tempBlock);
-                                }
-                                else if(y == 3 || y == 4 || y == 5)
-                                {
+                                } else if (y == 3 || y == 4 || y == 5) {
                                     Block tempBlock = new Block(Material.DIRT);
                                     tempBlock.setPosition(x + (cx * 16), y, z + (cz * 16));
                                     chunk.addBlock(tempBlock);
-                                }
-                                else if(y == 6)
-                                {
+                                } else if (y == 6) {
                                     Block tempBlock = new Block(Material.GRASS);
                                     tempBlock.setPosition(x + (cx * 16), y, z + (cz * 16));
                                     chunk.addBlock(tempBlock);
@@ -69,7 +62,8 @@ public class RenderWorld {
                             }
                         }
                     }
-                    ChunkInfo[cx][cz] = chunk;
+                }
+                ChunkInfo[cx][cz] = chunk;
 
             }
         }
