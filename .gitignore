@@ -1,11 +1,16 @@
 *.class
 
+.gradle/
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
 # Idea Folder
 /.idea
 /out
+*.iml
+*.ipr
+*.iws
 
 # Folder config file
 Desktop.ini
