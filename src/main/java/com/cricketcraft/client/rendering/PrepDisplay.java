@@ -1,7 +1,11 @@
 package com.cricketcraft.client.rendering;
 
-import static com.cricketcraft.core.utils.constants.LocationVars.*;
+import static com.cricketcraft.core.utils.constants.BlockInformation.*;
+import static com.cricketcraft.core.core.World.*;
 
+import com.cricketcraft.CaveGame;
+import com.cricketcraft.core.core.World;
+import com.cricketcraft.core.entity.EntityClientPlayer;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
@@ -37,13 +41,18 @@ public class PrepDisplay
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         GL11.glMatrixMode(GL11.GL_MODELVIEW);
         GL11.glLoadIdentity();
-        GLU.gluLookAt(xCord, yCord + 1.8f, zCord, xCord + xLook, yCord + 1.8f + yLook, zCord + zLook, 0, 1, 0);
-        RenderBlock.PrepBlocks();
+        GLU.gluLookAt(CaveGame.getWorld().thePlayer.getxCoord(), CaveGame.getWorld().thePlayer.getyCoord() + 1.8f, CaveGame.getWorld().thePlayer.getzCoord(), CaveGame.getWorld().thePlayer.getxCoord() + CaveGame.getWorld().thePlayer.getEyeX(), CaveGame.getWorld().thePlayer.getyCoord() + 1.8f + CaveGame.getWorld().thePlayer.getEyeY(), CaveGame.getWorld().thePlayer.getzCoord() + CaveGame.getWorld().thePlayer.getEyeZ(), 0, 1, 0);
+
+        GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
+        AllMouse.sky(100);
+        Display.update();
+
+        RenderWorld.PrepBlocks();
 
         while (!Display.isCloseRequested()) {
             GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 
-            RenderBlock.AllBlocks();
+            RenderWorld.AllBlocks();
 
             AllMouse.sky(100);
 

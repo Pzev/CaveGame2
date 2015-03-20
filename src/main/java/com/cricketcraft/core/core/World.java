@@ -6,7 +6,8 @@ public class World {
 
     public EntityClientPlayer thePlayer;
 
-    public World(){
+    public void World()
+    {
         thePlayer = new EntityClientPlayer(0.5001F, 64.0001F, 0.5001F, 1.5001F, 63.0901F, 0.5001F);
     }
 

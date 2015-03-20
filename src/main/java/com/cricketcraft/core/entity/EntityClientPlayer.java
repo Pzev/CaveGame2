@@ -1,5 +1,7 @@
 package com.cricketcraft.core.entity;
 
+import com.cricketcraft.core.core.Chunk;
+
 public class EntityClientPlayer {
     protected float xCoord;
     protected float yCoord;
@@ -8,6 +10,8 @@ public class EntityClientPlayer {
     protected float eyeX;
     protected float eyeY;
     protected float eyeZ;
+
+    protected int renderDistance = 4;
 
     public EntityClientPlayer(float x, float y, float z, float eyeX, float eyeY, float eyeZ){
         this.xCoord = x;
@@ -44,26 +48,59 @@ public class EntityClientPlayer {
     }
 
     public float getxCoord() {
-        return xCoord;
+        return this.xCoord;
     }
 
     public float getyCoord() {
-        return yCoord;
+        return this.yCoord;
     }
 
     public float getzCoord() {
-        return zCoord;
+        return this.zCoord;
     }
 
     public float getEyeX() {
-        return eyeX;
+        return this.eyeX;
     }
 
     public float getEyeY() {
-        return eyeY;
+        return this.eyeY;
     }
 
     public float getEyeZ() {
-        return eyeZ;
+        return this.eyeZ;
     }
+
+    public void setRenderDistance(int rendDist) {
+        this.renderDistance = rendDist;
+    }
+
+    public int getRenderDistance() {
+        return this.renderDistance;
+    }
+
+    public boolean isWithinRenderDistance(int cx, int cz)
+    {
+        int xLocation = (int) xCoord/16;
+        int zLocation = (int) zCoord/16;
+        if((cx < xLocation + renderDistance && cx > xLocation - renderDistance) && (cz < zLocation + renderDistance && cz > zLocation - renderDistance))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public int inChunkX()
+    {
+        return (int) xCoord/16;
+    }
+
+    public int inChunkZ()
+    {
+        return (int) zCoord/16;
+    }
+
 }

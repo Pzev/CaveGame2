@@ -31,7 +31,7 @@ public class AllMouse
 
             GL11.glMatrixMode(GL11.GL_MODELVIEW);
             GL11.glLoadIdentity();
-            GLU.gluLookAt(xCord, yCord + 1.8f, zCord, xCord + xLook, yCord + 1.8f + yLook, zCord + zLook, 0, 1, 0);
+            GLU.gluLookAt(CaveGame.getWorld().thePlayer.getxCoord(), CaveGame.getWorld().thePlayer.getyCoord() + 1.8f, CaveGame.getWorld().thePlayer.getzCoord(), CaveGame.getWorld().thePlayer.getxCoord() + CaveGame.getWorld().thePlayer.getEyeX(), CaveGame.getWorld().thePlayer.getyCoord() + 1.8f + CaveGame.getWorld().thePlayer.getEyeY(), CaveGame.getWorld().thePlayer.getzCoord() + CaveGame.getWorld().thePlayer.getEyeZ(), 0, 1, 0);
 
         }
     }
@@ -57,42 +57,42 @@ public class AllMouse
             GL11.glTranslatef(-CaveGame.getWorld().thePlayer.getxCoord(), -CaveGame.getWorld().thePlayer.getyCoord() -1.8F, -CaveGame.getWorld().thePlayer.getzCoord());
         }
         if (Keyboard.isKeyDown(Keyboard.KEY_S)) {
-            xCord -= Math.cos(zAngle*Math.PI/180)*sprint*moveLength;
-            zCord -= Math.sin(zAngle*Math.PI/180)*sprint*moveLength;
+            CaveGame.getWorld().thePlayer.setxCoord((float) (CaveGame.getWorld().thePlayer.getxCoord() - Math.cos(zAngle * Math.PI / 180) * sprint * moveLength));
+            CaveGame.getWorld().thePlayer.setzCoord((float) (CaveGame.getWorld().thePlayer.getzCoord() - Math.sin(zAngle * Math.PI / 180) * sprint * moveLength));
             GL11.glMatrixMode(GL11.GL_MODELVIEW);
             GL11.glLoadIdentity();
             GL11.glRotatef(zAngle, 0, 1, 0);
-            GL11.glTranslatef(-xCord, -yCord-1.8f, -zCord);
+            GL11.glTranslatef(-CaveGame.getWorld().thePlayer.getxCoord(), -CaveGame.getWorld().thePlayer.getyCoord()-1.8f, -CaveGame.getWorld().thePlayer.getzCoord());
         }
         if (Keyboard.isKeyDown(Keyboard.KEY_A)) {
-            xCord += Math.sin(zAngle*Math.PI/180)*sprint*moveLength;
-            zCord -= Math.cos(zAngle*Math.PI/180)*sprint*moveLength;
+            CaveGame.getWorld().thePlayer.setxCoord((float) (CaveGame.getWorld().thePlayer.getxCoord() + Math.sin(zAngle * Math.PI / 180) * sprint * moveLength));
+            CaveGame.getWorld().thePlayer.setzCoord((float) (CaveGame.getWorld().thePlayer.getzCoord() - Math.cos(zAngle * Math.PI / 180) * sprint * moveLength));
             GL11.glMatrixMode(GL11.GL_MODELVIEW);
             GL11.glLoadIdentity();
             GL11.glRotatef(zAngle, 0, 1, 0);
-            GL11.glTranslatef(-xCord, -yCord-1.8f, -zCord);
+            GL11.glTranslatef(-CaveGame.getWorld().thePlayer.getxCoord(), -CaveGame.getWorld().thePlayer.getyCoord()-1.8f, -CaveGame.getWorld().thePlayer.getzCoord());
         }
         if (Keyboard.isKeyDown(Keyboard.KEY_D)) {
-            xCord -= Math.sin(zAngle*Math.PI/180)*sprint*moveLength;
-            zCord += Math.cos(zAngle*Math.PI/180)*sprint*moveLength;
+            CaveGame.getWorld().thePlayer.setxCoord((float) (CaveGame.getWorld().thePlayer.getxCoord() - Math.sin(zAngle * Math.PI / 180) * sprint * moveLength));
+            CaveGame.getWorld().thePlayer.setzCoord((float) (CaveGame.getWorld().thePlayer.getzCoord() + Math.cos(zAngle * Math.PI / 180) * sprint * moveLength));
             GL11.glMatrixMode(GL11.GL_MODELVIEW);
             GL11.glLoadIdentity();
             GL11.glRotatef(zAngle, 0, 1, 0);
-            GL11.glTranslatef(-xCord, -yCord-1.8f, -zCord);
+            GL11.glTranslatef(-CaveGame.getWorld().thePlayer.getxCoord(), -CaveGame.getWorld().thePlayer.getyCoord()-1.8f, -CaveGame.getWorld().thePlayer.getzCoord());
         }
         if (Keyboard.isKeyDown(Keyboard.KEY_SPACE) && space==0) {
-            yCord += 0.1*sprint*moveLength;
+            CaveGame.getWorld().thePlayer.setyCoord((float) (CaveGame.getWorld().thePlayer.getyCoord() + 0.3 * sprint * moveLength));
             GL11.glMatrixMode(GL11.GL_MODELVIEW);
             GL11.glLoadIdentity();
             GL11.glRotatef(zAngle, 0, 1, 0);
-            GL11.glTranslatef(-xCord, -yCord-1.8f, -zCord);
+            GL11.glTranslatef(-CaveGame.getWorld().thePlayer.getxCoord(), -CaveGame.getWorld().thePlayer.getyCoord()-1.8f, -CaveGame.getWorld().thePlayer.getzCoord());
         }
         if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
-            yCord -= 0.1*sprint*moveLength;
+            CaveGame.getWorld().thePlayer.setyCoord((float) (CaveGame.getWorld().thePlayer.getyCoord() - 0.3 * sprint * moveLength));
             GL11.glMatrixMode(GL11.GL_MODELVIEW);
             GL11.glLoadIdentity();
             GL11.glRotatef(zAngle, 0, 1, 0);
-            GL11.glTranslatef(-xCord, -yCord-1.8f, -zCord);
+            GL11.glTranslatef(-CaveGame.getWorld().thePlayer.getxCoord(), -CaveGame.getWorld().thePlayer.getyCoord()-1.8f, -CaveGame.getWorld().thePlayer.getzCoord());
         }
 
         if (Keyboard.isKeyDown(Keyboard.KEY_LCONTROL)) {
@@ -128,12 +128,12 @@ public class AllMouse
         GL11.glColor4f(0.196f, 0.6f, 0.8f, 1.0f); // blue
         short r = (short) (dist*16);
 
-        float thexp = xCord + r;
-        float theyp = yCord + 256;
-        float thezp = zCord + r;
-        float thexn = xCord - r;
-        float theyn = yCord - 256;
-        float thezn = zCord - r;
+        float thexp = CaveGame.getWorld().thePlayer.getxCoord() + r;
+        float theyp = CaveGame.getWorld().thePlayer.getyCoord() + 256;
+        float thezp = CaveGame.getWorld().thePlayer.getzCoord() + r;
+        float thexn = CaveGame.getWorld().thePlayer.getxCoord() - r;
+        float theyn = CaveGame.getWorld().thePlayer.getyCoord() - 256;
+        float thezn = CaveGame.getWorld().thePlayer.getzCoord() - r;
 
         GL11.glBegin(GL11.GL_QUADS); // of the color cube
 

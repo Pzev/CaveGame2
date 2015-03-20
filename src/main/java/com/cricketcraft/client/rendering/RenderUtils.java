@@ -1,9 +1,8 @@
 package com.cricketcraft.client.rendering;
 
+import com.cricketcraft.CaveGame;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
-
-import static com.cricketcraft.core.utils.constants.LocationVars.*;
 
 public class RenderUtils
 {
@@ -12,6 +11,6 @@ public class RenderUtils
     {
         GL11.glMatrixMode(GL11.GL_MODELVIEW);
         GL11.glLoadIdentity();
-        GLU.gluLookAt(xCord, yCord + 1.8f, zCord, xCord + xLook, yCord + 1.8f + yLook, zCord + zLook, 0, 1, 0);
+        GLU.gluLookAt(CaveGame.getWorld().thePlayer.getxCoord(), CaveGame.getWorld().thePlayer.getyCoord() + 1.8f, CaveGame.getWorld().thePlayer.getzCoord(), CaveGame.getWorld().thePlayer.getxCoord() + CaveGame.getWorld().thePlayer.getEyeX(), CaveGame.getWorld().thePlayer.getyCoord() + 1.8f + CaveGame.getWorld().thePlayer.getEyeY(), CaveGame.getWorld().thePlayer.getzCoord() + CaveGame.getWorld().thePlayer.getEyeZ(), 0, 1, 0);
     }
 }

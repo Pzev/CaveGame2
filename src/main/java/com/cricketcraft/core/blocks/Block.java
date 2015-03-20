@@ -2,7 +2,7 @@ package com.cricketcraft.core.blocks;
 
 public class Block
 {
-    private static boolean renderSidesSame = true;
+    private boolean renderSidesSame = true;
     public int xCoord, yCoord, zCoord;
     private Material material;
 
@@ -17,5 +17,12 @@ public class Block
     public void renderSidesSame(boolean renderSides)
     {
         renderSidesSame = renderSides;
+    }
+
+    public void setPosition(int x, int y, int z)
+    {
+        xCoord = x;
+        yCoord = y;
+        zCoord = z;
     }
 }

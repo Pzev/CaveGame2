@@ -2,10 +2,11 @@ package com.cricketcraft;
 
 import com.cricketcraft.client.rendering.PrepDisplay;
 import com.cricketcraft.core.core.World;
+import com.cricketcraft.core.entity.EntityClientPlayer;
 
 public class CaveGame
 {
-    protected World theWorld = new World();
+    protected static World theWorld = new World();
 
     public static void main(String args[])
     {
@@ -14,10 +15,14 @@ public class CaveGame
         postInit();
     }
 
-    public static void preInit() {
+    public static void preInit()
+    {
+        theWorld.World();
+
         PrepDisplay displayPrep = new PrepDisplay();
         displayPrep.prepDisplay();
 
+        
     }
 
     public static void init()
