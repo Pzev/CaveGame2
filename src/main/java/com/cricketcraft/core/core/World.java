@@ -12,7 +12,4 @@ public class World {
         thePlayer = new EntityClientPlayer(0.0F, 64.0F, 0.0F, 1.0F, -0.0F, 0.0000F);
     }
 
-    public void setBlock(int x, int y, int z){
-
-    }
 }

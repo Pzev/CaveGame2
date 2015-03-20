@@ -3,6 +3,8 @@ package com.cricketcraft.core.entity;
 import com.cricketcraft.CaveGame;
 import com.cricketcraft.core.core.Chunk;
 
+import static com.cricketcraft.core.utils.constants.BlockInformation.*;
+
 public class EntityClientPlayer {
     protected float xCoord;
     protected float yCoord;
@@ -13,6 +15,12 @@ public class EntityClientPlayer {
     protected float eyeZ;
 
     protected int renderDistance = 4;
+
+    protected int chunkXPrevious;
+    protected int chunkZPrevious;
+
+    protected int chunkX;
+    protected int chunkZ;
 
     public EntityClientPlayer(float x, float y, float z, float eyeX, float eyeY, float eyeZ){
         this.xCoord = x;
@@ -94,14 +102,40 @@ public class EntityClientPlayer {
         }
     }
 
-    public int inChunkX()
+    public void prepChunkData()
     {
-        return (int) CaveGame.getWorld().thePlayer.xCoord/16;
+        CaveGame.getWorld().thePlayer.chunkX = (int) CaveGame.getWorld().thePlayer.xCoord/16;
+        CaveGame.getWorld().thePlayer.chunkZ = (int) CaveGame.getWorld().thePlayer.zCoord/16;
+        CaveGame.getWorld().thePlayer.chunkXPrevious = -1;
+        CaveGame.getWorld().thePlayer.chunkZPrevious = -1;
     }
 
-    public int inChunkZ()
+    public int getChunkX()
     {
-        return (int) CaveGame.getWorld().thePlayer.zCoord/16;
+        CaveGame.getWorld().thePlayer.chunkX = (int) CaveGame.getWorld().thePlayer.xCoord/16;
+        return CaveGame.getWorld().thePlayer.chunkX;
+    }
+
+    public int getChunkZ()
+    {
+        CaveGame.getWorld().thePlayer.chunkZ = (int) CaveGame.getWorld().thePlayer.zCoord/16;
+        return CaveGame.getWorld().thePlayer.chunkZ;
+    }
+
+    public int getChunkXPrevious()
+    {
+        return CaveGame.getWorld().thePlayer.chunkXPrevious;
+    }
+
+    public int getChunkZPrevious()
+    {
+        return CaveGame.getWorld().thePlayer.chunkZPrevious;
+    }
+
+    public void setChunkPrevious(int xPrev, int zPrev)
+    {
+        CaveGame.getWorld().thePlayer.chunkXPrevious = xPrev;
+        CaveGame.getWorld().thePlayer.chunkZPrevious = zPrev;
     }
 
 }

@@ -48,10 +48,14 @@ public class PrepDisplay
         AllMouse.sky(100);
         Display.update();
 
+        CaveGame.getWorld().thePlayer.prepChunkData();
         RenderWorld.PrepBlocks();
 
         while (!Display.isCloseRequested()) {
             GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
+
+            GameTick.Seconds1();
+            GameTick.Seconds3();
 
             RenderWorld.AllBlocks();
 
@@ -60,9 +64,7 @@ public class PrepDisplay
             AllMouse.move();
             AllMouse.look();
 
-            GameTick.Milliseconds50();
-            GameTick.Seconds1();
-            GameTick.Seconds3();
+
 
             Display.update();
         }

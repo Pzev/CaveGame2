@@ -45,7 +45,7 @@ public class GameTick
             {
                 Seconds1 += 1;
                 // Add commands to be executed 5 times a second here
-
+                RenderWorld.PrepBlocks();
 
             }
             Seconds1 = System.nanoTime() / BILLION;
@@ -60,7 +60,6 @@ public class GameTick
             {
                 Seconds3 += 3;
                 // Add commands to be executed 5 times a second here
-                RenderWorld.PrepBlocks();
 
             }
             Seconds3 = System.nanoTime() / BILLION;

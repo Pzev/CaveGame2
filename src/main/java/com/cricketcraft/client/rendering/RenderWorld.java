@@ -20,22 +20,11 @@ public class RenderWorld {
             {
                 if(CaveGame.getWorld().thePlayer.isWithinRenderDistance(cx, cz))
                 {
-                    Chunk chunk = ChunkInfo[cx][cz];
-                    if(chunk != null)
-                        for (int x = 0; x < 16; x++)
-                        {
-                            for (int z = 0; z < 16; z++)
-                            {
-                                for (int y = 0; y < 128; y++)
-                                {
-                                    if(chunk.BlockInfo[x][y][z].getMaterial() != Material.AIR)
-                                    {
-                                        RenderBlock tempblock = new RenderBlock(chunk.BlockInfo[x][y][z]);
-                                        tempblock.renderBase(x, y, z);
-                                    }
-                                }
-                            }
-                        }
+                    if(ChunkInfo[cx][cz] != null)
+                    {
+                        Chunk chunk = ChunkInfo[cx][cz];
+                        chunk.renderChunk(cx, cz);
+                    }
                 }
             }
         }
@@ -44,44 +33,52 @@ public class RenderWorld {
     public static void PrepBlocks()
     {
         setRenderMins();
-
-        for (int cx = xMin; cx < (xMin + (CaveGame.getWorld().thePlayer.getRenderDistance() * 2) + 2); cx++)
+        if (CaveGame.getWorld().thePlayer.getChunkX() != CaveGame.getWorld().thePlayer.getChunkXPrevious() || CaveGame.getWorld().thePlayer.getChunkZ() != CaveGame.getWorld().thePlayer.getChunkZPrevious())
         {
-            for (int cz = zMin; cz < (zMin + (CaveGame.getWorld().thePlayer.getRenderDistance() * 2) + 2); cz++)
+            for (int cx = xMin; cx < (xMin + (CaveGame.getWorld().thePlayer.getRenderDistance() * 2) + 2); cx++)
             {
-                Chunk chunk = ChunkInfo[cx][cz];
-                if(chunk == null)
+                for (int cz = zMin; cz < (zMin + (CaveGame.getWorld().thePlayer.getRenderDistance() * 2) + 2); cz++)
                 {
-                    for (int x = 0; x < 16; x++)
+                    if (CaveGame.getWorld().thePlayer.isWithinRenderDistance(cx, cz))
                     {
-                        for (int z = 0; z < 16; z++)
+                        if(ChunkInfo[cx][cz] == null)
                         {
-                            for (int y = 0; y < 7; y++)
+                            Chunk chunk = new Chunk();
+                            for (int x = 0; x < 16; x++)
                             {
-                                if(chunk.BlockInfo[x][y][z] != null)
-                                if (y == 0 || y == 1 || y == 2)
+                                for (int z = 0; z < 16; z++)
                                 {
-                                    chunk.addBlock(x, y, z, Material.STONE);
-                                }
-                                else if (y == 3 || y == 4 || y == 5)
-                                {
-                                    chunk.addBlock(x, y, z, Material.DIRT);
-                                }
-                                else if (y == 6)
-                                {
-                                    chunk.addBlock(x, y, z, Material.GRASS);
-                                }
-                                else
-                                {
-                                    chunk.addBlock(x, y, z, Material.AIR);
+                                    for (int y = 0; y < 128; y++)
+                                    {
+                                        Block tempBlock = new Block(Material.AIR);
+                                        if ((y == 0 || y == 1 || y == 2) && chunk.BlockInfo[x][y][z] == null)
+                                        {
+                                            tempBlock = new Block(Material.STONE);
+                                            chunk.addBlock(x, y, z, tempBlock);
+                                        }
+                                        else if ((y == 3 || y == 4 || y == 5) && chunk.BlockInfo[x][y][z] == null)
+                                        {
+                                            tempBlock = new Block(Material.DIRT);
+                                            chunk.addBlock(x, y, z, tempBlock);
+                                        }
+                                        else if ((y == 6) && chunk.BlockInfo[x][y][z] == null)
+                                        {
+                                            tempBlock = new Block(Material.GRASS);
+                                            chunk.addBlock(x, y, z, tempBlock);
+                                        }
+                                        else if (chunk.BlockInfo[x][y][z] == null)
+                                        {
+                                            chunk.addBlock(x, y, z, tempBlock);
+                                        }
+                                    }
                                 }
                             }
+                            ChunkInfo[cx][cz] = chunk;
                         }
                     }
                 }
-                ChunkInfo[cx][cz] = chunk;
-
             }
+            CaveGame.getWorld().thePlayer.setChunkPrevious(CaveGame.getWorld().thePlayer.getChunkX(), CaveGame.getWorld().thePlayer.getChunkZ());
         }
     }
 
@@ -91,30 +88,30 @@ public class RenderWorld {
     private static void setRenderMins()
     {
 
-        if(CaveGame.getWorld().thePlayer.inChunkX() <= CaveGame.getWorld().thePlayer.getRenderDistance())
+        if(CaveGame.getWorld().thePlayer.getChunkX() <= CaveGame.getWorld().thePlayer.getRenderDistance())
         {
             xMin = 0;
         }
-        else if(CaveGame.getWorld().thePlayer.inChunkX() >= TOTAL_CHUNKS + CaveGame.getWorld().thePlayer.getRenderDistance())
+        else if(CaveGame.getWorld().thePlayer.getChunkX() >= TOTAL_CHUNKS + CaveGame.getWorld().thePlayer.getRenderDistance())
         {
             xMin = TOTAL_CHUNKS - 1;
         }
         else
         {
-            xMin = CaveGame.getWorld().thePlayer.inChunkX() - CaveGame.getWorld().thePlayer.getRenderDistance() - 1;
+            xMin = CaveGame.getWorld().thePlayer.getChunkX() - CaveGame.getWorld().thePlayer.getRenderDistance() - 1;
         }
 
-        if(CaveGame.getWorld().thePlayer.inChunkZ() <= CaveGame.getWorld().thePlayer.getRenderDistance())
+        if(CaveGame.getWorld().thePlayer.getChunkZ() <= CaveGame.getWorld().thePlayer.getRenderDistance())
         {
             zMin = 0;
         }
-        else if(CaveGame.getWorld().thePlayer.inChunkZ() >= TOTAL_CHUNKS + CaveGame.getWorld().thePlayer.getRenderDistance())
+        else if(CaveGame.getWorld().thePlayer.getChunkZ() >= TOTAL_CHUNKS + CaveGame.getWorld().thePlayer.getRenderDistance())
         {
             zMin = TOTAL_CHUNKS - 1;
         }
         else
         {
-            zMin = CaveGame.getWorld().thePlayer.inChunkZ() - CaveGame.getWorld().thePlayer.getRenderDistance() - 1;
+            zMin = CaveGame.getWorld().thePlayer.getChunkZ() - CaveGame.getWorld().thePlayer.getRenderDistance() - 1;
         }
     }
 
