@@ -22,11 +22,20 @@ public class RenderWorld {
                 {
                     Chunk chunk = ChunkInfo[cx][cz];
                     if(chunk != null)
-                    for (int blok = 0; blok < chunk.BlockInfo.size(); blok++)
-                    {
-                        RenderBlock block = new RenderBlock(chunk.BlockInfo.get(blok));
-                        block.renderBase();
-                    }
+                        for (int x = 0; x < 16; x++)
+                        {
+                            for (int z = 0; z < 16; z++)
+                            {
+                                for (int y = 0; y < 128; y++)
+                                {
+                                    if(chunk.BlockInfo[x][y][z].getMaterial() != Material.AIR)
+                                    {
+                                        RenderBlock tempblock = new RenderBlock(chunk.BlockInfo[x][y][z]);
+                                        tempblock.renderBase(x, y, z);
+                                    }
+                                }
+                            }
+                        }
                 }
             }
         }
@@ -41,24 +50,31 @@ public class RenderWorld {
             for (int cz = zMin; cz < (zMin + (CaveGame.getWorld().thePlayer.getRenderDistance() * 2) + 2); cz++)
             {
                 Chunk chunk = ChunkInfo[cx][cz];
-                if(chunk == null) {
-                    for (int x = 0; x < 16; x++) {
-                        for (int z = 0; z < 16; z++) {
-                            for (int y = 0; y < 7; y++) {
-                                if (y == 0 || y == 1 || y == 2) {
-                                    Block tempBlock = new Block(Material.STONE);
-                                    tempBlock.setPosition(x + (cx * 16), y, z + (cz * 16));
-                                    chunk.addBlock(tempBlock);
-                                } else if (y == 3 || y == 4 || y == 5) {
-                                    Block tempBlock = new Block(Material.DIRT);
-                                    tempBlock.setPosition(x + (cx * 16), y, z + (cz * 16));
-                                    chunk.addBlock(tempBlock);
-                                } else if (y == 6) {
-                                    Block tempBlock = new Block(Material.GRASS);
-                                    tempBlock.setPosition(x + (cx * 16), y, z + (cz * 16));
-                                    chunk.addBlock(tempBlock);
+                if(chunk == null)
+                {
+                    for (int x = 0; x < 16; x++)
+                    {
+                        for (int z = 0; z < 16; z++)
+                        {
+                            for (int y = 0; y < 7; y++)
+                            {
+                                if(chunk.BlockInfo[x][y][z] != null)
+                                if (y == 0 || y == 1 || y == 2)
+                                {
+                                    chunk.addBlock(x, y, z, Material.STONE);
                                 }
-
+                                else if (y == 3 || y == 4 || y == 5)
+                                {
+                                    chunk.addBlock(x, y, z, Material.DIRT);
+                                }
+                                else if (y == 6)
+                                {
+                                    chunk.addBlock(x, y, z, Material.GRASS);
+                                }
+                                else
+                                {
+                                    chunk.addBlock(x, y, z, Material.AIR);
+                                }
                             }
                         }
                     }

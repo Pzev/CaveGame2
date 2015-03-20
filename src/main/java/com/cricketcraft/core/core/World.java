@@ -9,7 +9,7 @@ public class World {
 
     public void World()
     {
-        thePlayer = new EntityClientPlayer(0.5F + TOTAL_CHUNKS * 8, 64.0F, 0.5F + TOTAL_CHUNKS * 8, 0.0001F + TOTAL_CHUNKS * 8, -0.9001F, 0.0000F + TOTAL_CHUNKS * 8);
+        thePlayer = new EntityClientPlayer(0.0F, 64.0F, 0.0F, 1.0F, -0.0F, 0.0000F);
     }
 
     public void setBlock(int x, int y, int z){

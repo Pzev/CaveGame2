@@ -4,6 +4,7 @@ import static com.cricketcraft.core.utils.constants.BlockInformation.*;
 import static com.cricketcraft.core.core.World.*;
 
 import com.cricketcraft.CaveGame;
+import com.cricketcraft.core.core.GameTick;
 import com.cricketcraft.core.core.World;
 import com.cricketcraft.core.entity.EntityClientPlayer;
 import org.lwjgl.LWJGLException;
@@ -59,6 +60,9 @@ public class PrepDisplay
             AllMouse.move();
             AllMouse.look();
 
+            GameTick.Milliseconds50();
+            GameTick.Seconds1();
+            GameTick.Seconds3();
 
             Display.update();
         }

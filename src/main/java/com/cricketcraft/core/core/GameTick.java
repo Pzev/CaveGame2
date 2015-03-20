@@ -1,11 +1,13 @@
 package com.cricketcraft.core.core;
 
+import com.cricketcraft.client.rendering.RenderWorld;
+
 import static com.cricketcraft.core.utils.constants.TimeInformation.*;
 
 public class GameTick
 {
 
-    private void Milliseconds50()
+    public static void Milliseconds50()
     {
         if(System.nanoTime() / MILLION > Milliseconds50 + 50)
         {
@@ -20,7 +22,7 @@ public class GameTick
         }
     }
 
-    private void Milliseconds200()
+    public static void Milliseconds200()
     {
         if(System.nanoTime() / MILLION > Milliseconds200 + 200)
         {
@@ -35,7 +37,7 @@ public class GameTick
         }
     }
 
-    private void Seconds1()
+    public static void Seconds1()
     {
         if(System.nanoTime() / BILLION > Seconds1 + 1)
         {
@@ -46,22 +48,52 @@ public class GameTick
 
 
             }
-            Seconds1 = System.nanoTime()/BILLION;
+            Seconds1 = System.nanoTime() / BILLION;
         }
     }
 
-    private void Seconds3()
+    public static void Seconds3()
     {
-        if(System.nanoTime()/BILLION > Seconds3 + 3)
+        if(System.nanoTime() / BILLION > Seconds3 + 3)
         {
-            while(System.nanoTime()/BILLION > Seconds3 + 3)
+            while(System.nanoTime() / BILLION > Seconds3 + 3)
             {
                 Seconds3 += 3;
+                // Add commands to be executed 5 times a second here
+                RenderWorld.PrepBlocks();
+
+            }
+            Seconds3 = System.nanoTime() / BILLION;
+        }
+    }
+
+    public static void Seconds10()
+    {
+        if(System.nanoTime() / BILLION > Seconds3 + 10)
+        {
+            while(System.nanoTime() / BILLION > Seconds3 + 10)
+            {
+                Seconds3 += 10;
                 // Add commands to be executed 5 times a second here
 
 
             }
-            Seconds3 = System.nanoTime()/BILLION;
+            Seconds3 = System.nanoTime() / BILLION;
+        }
+    }
+
+    public static void Seconds30()
+    {
+        if(System.nanoTime() / BILLION > Seconds3 + 30)
+        {
+            while(System.nanoTime() / BILLION > Seconds3 + 30)
+            {
+                Seconds3 += 30;
+                // Add commands to be executed 5 times a second here
+
+
+            }
+            Seconds3 = System.nanoTime() / BILLION;
         }
     }
 

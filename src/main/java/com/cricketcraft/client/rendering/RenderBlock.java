@@ -11,118 +11,118 @@ public class RenderBlock
         this.block = block;
     }
 
-    public void renderBase()
+    public void renderBase(int x, int y, int z)
     {
         block.getMaterial().color();
 
         // X+ Side
         GL11.glBegin(GL11.GL_QUADS);
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord, block.zCoord + 1);
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord + 1, block.zCoord + 1);
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord + 1, block.zCoord);
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord, block.zCoord);
+        GL11.glVertex3f(x + 1, y, z + 1);
+        GL11.glVertex3f(x + 1, y + 1, z + 1);
+        GL11.glVertex3f(x + 1, y + 1, z);
+        GL11.glVertex3f(x + 1, y, z);
 
         // X- Side
-        GL11.glVertex3f(block.xCoord, block.yCoord, block.zCoord + 1);
-        GL11.glVertex3f(block.xCoord, block.yCoord + 1, block.zCoord + 1);
-        GL11.glVertex3f(block.xCoord, block.yCoord + 1, block.zCoord);
-        GL11.glVertex3f(block.xCoord, block.yCoord, block.zCoord);
+        GL11.glVertex3f(x, y, z + 1);
+        GL11.glVertex3f(x, y + 1, z + 1);
+        GL11.glVertex3f(x, y + 1, z);
+        GL11.glVertex3f(x, y, z);
 
         // Y+ Side
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord + 1, block.zCoord + 1);
-        GL11.glVertex3f(block.xCoord, block.yCoord + 1, block.zCoord + 1);
-        GL11.glVertex3f(block.xCoord, block.yCoord + 1, block.zCoord);
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord + 1, block.zCoord);
+        GL11.glVertex3f(x + 1, y + 1, z + 1);
+        GL11.glVertex3f(x, y + 1, z + 1);
+        GL11.glVertex3f(x, y + 1, z);
+        GL11.glVertex3f(x + 1, y + 1, z);
 
         // Y- Side
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord, block.zCoord + 1);
-        GL11.glVertex3f(block.xCoord, block.yCoord, block.zCoord + 1);
-        GL11.glVertex3f(block.xCoord, block.yCoord, block.zCoord);
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord, block.zCoord);
+        GL11.glVertex3f(x + 1, y, z + 1);
+        GL11.glVertex3f(x, y, z + 1);
+        GL11.glVertex3f(x, y, z);
+        GL11.glVertex3f(x + 1, y, z);
 
         // Z+ Side
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord + 1, block.zCoord + 1);
-        GL11.glVertex3f(block.xCoord, block.yCoord + 1, block.zCoord + 1);
-        GL11.glVertex3f(block.xCoord, block.yCoord, block.zCoord + 1);
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord, block.zCoord + 1);
+        GL11.glVertex3f(x + 1, y + 1, z + 1);
+        GL11.glVertex3f(x, y + 1, z + 1);
+        GL11.glVertex3f(x, y, z + 1);
+        GL11.glVertex3f(x + 1, y, z + 1);
 
         // Z- Side
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord + 1, block.zCoord);
-        GL11.glVertex3f(block.xCoord, block.yCoord + 1, block.zCoord);
-        GL11.glVertex3f(block.xCoord, block.yCoord, block.zCoord);
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord, block.zCoord);
+        GL11.glVertex3f(x + 1, y + 1, z);
+        GL11.glVertex3f(x, y + 1, z);
+        GL11.glVertex3f(x, y, z);
+        GL11.glVertex3f(x + 1, y, z);
         GL11.glEnd();
     }
 
-    public void renderXP()
+    public void renderXP(int x, int y, int z)
     {
         block.getMaterial().color();
         // X+ Side
         GL11.glBegin(GL11.GL_QUADS);
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord, block.zCoord + 1);
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord + 1, block.zCoord + 1);
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord + 1, block.zCoord);
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord, block.zCoord);
+        GL11.glVertex3f(x + 1, y, z + 1);
+        GL11.glVertex3f(x + 1, y + 1, z + 1);
+        GL11.glVertex3f(x + 1, y + 1, z);
+        GL11.glVertex3f(x + 1, y, z);
         GL11.glEnd();
     }
 
-    public void renderXN()
+    public void renderXN(int x, int y, int z)
     {
         block.getMaterial().color();
         // X- Side
         GL11.glBegin(GL11.GL_QUADS);
-        GL11.glVertex3f(block.xCoord, block.yCoord, block.zCoord + 1);
-        GL11.glVertex3f(block.xCoord, block.yCoord + 1, block.zCoord + 1);
-        GL11.glVertex3f(block.xCoord, block.yCoord + 1, block.zCoord);
-        GL11.glVertex3f(block.xCoord, block.yCoord, block.zCoord);
+        GL11.glVertex3f(x, y, z + 1);
+        GL11.glVertex3f(x, y + 1, z + 1);
+        GL11.glVertex3f(x, y + 1, z);
+        GL11.glVertex3f(x, y, z);
         GL11.glEnd();
     }
 
-    public void renderYP()
+    public void renderYP(int x, int y, int z)
     {
         block.getMaterial().color();
         // Y+ Side
         GL11.glBegin(GL11.GL_QUADS);
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord + 1, block.zCoord + 1);
-        GL11.glVertex3f(block.xCoord, block.yCoord + 1, block.zCoord + 1);
-        GL11.glVertex3f(block.xCoord, block.yCoord + 1, block.zCoord);
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord + 1, block.zCoord);
+        GL11.glVertex3f(x + 1, y + 1, z + 1);
+        GL11.glVertex3f(x, y + 1, z + 1);
+        GL11.glVertex3f(x, y + 1, z);
+        GL11.glVertex3f(x + 1, y + 1, z);
         GL11.glEnd();
     }
 
-    public void renderYN()
+    public void renderYN(int x, int y, int z)
     {
         block.getMaterial().color();
         // Y- Side
         GL11.glBegin(GL11.GL_QUADS);
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord, block.zCoord + 1);
-        GL11.glVertex3f(block.xCoord, block.yCoord, block.zCoord + 1);
-        GL11.glVertex3f(block.xCoord, block.yCoord, block.zCoord);
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord, block.zCoord);
+        GL11.glVertex3f(x + 1, y, z + 1);
+        GL11.glVertex3f(x, y, z + 1);
+        GL11.glVertex3f(x, y, z);
+        GL11.glVertex3f(x + 1, y, z);
         GL11.glEnd();
     }
 
-    public void renderZP()
+    public void renderZP(int x, int y, int z)
     {
         block.getMaterial().color();
         // Z+ Side
         GL11.glBegin(GL11.GL_QUADS);
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord + 1, block.zCoord + 1);
-        GL11.glVertex3f(block.xCoord, block.yCoord + 1, block.zCoord + 1);
-        GL11.glVertex3f(block.xCoord, block.yCoord, block.zCoord + 1);
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord, block.zCoord + 1);
+        GL11.glVertex3f(x + 1, y + 1, z + 1);
+        GL11.glVertex3f(x, y + 1, z + 1);
+        GL11.glVertex3f(x, y, z + 1);
+        GL11.glVertex3f(x + 1, y, z + 1);
         GL11.glEnd();
     }
 
-    public void renderZN()
+    public void renderZN(int x, int y, int z)
     {
         block.getMaterial().color();
         // Z- Side
         GL11.glBegin(GL11.GL_QUADS);
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord + 1, block.zCoord);
-        GL11.glVertex3f(block.xCoord, block.yCoord + 1, block.zCoord);
-        GL11.glVertex3f(block.xCoord, block.yCoord, block.zCoord);
-        GL11.glVertex3f(block.xCoord + 1, block.yCoord, block.zCoord);
+        GL11.glVertex3f(x + 1, y + 1, z);
+        GL11.glVertex3f(x, y + 1, z);
+        GL11.glVertex3f(x, y, z);
+        GL11.glVertex3f(x + 1, y, z);
         GL11.glEnd();
     }
 

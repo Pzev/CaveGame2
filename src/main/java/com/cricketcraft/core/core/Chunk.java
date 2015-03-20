@@ -1,12 +1,13 @@
 package com.cricketcraft.core.core;
 
 import com.cricketcraft.core.blocks.Block;
+import com.cricketcraft.core.blocks.Material;
 
 import java.util.ArrayList;
 
 public class Chunk
 {
-    public ArrayList<Block> BlockInfo = new ArrayList<Block>();
+    public Block[][][] BlockInfo = new Block[16][128][16];
 
     public int blockAmount;
 
@@ -20,13 +21,13 @@ public class Chunk
         blockAmount = amt;
     }
 
-    public ArrayList<Block> blockInfo()
+    public Block[][][] blockInfo()
     {
-        return this.BlockInfo;
+        return BlockInfo;
     }
 
-    public void addBlock(Block blockInfo)
+    public void addBlock(int x, int y, int z, Material material)
     {
-        BlockInfo.add(blockInfo);
+        BlockInfo[x][y][z] = new Block(material);
     }
 }
