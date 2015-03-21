@@ -185,4 +185,64 @@ public class RenderBlock
                 renderZN(blockX, y, blockZ);
     }
 
+    public void laglessWireFrame(int x, int y, int z, int cx, int cz)
+    {
+        int blockX = x + (cx * 16);
+        int blockZ = z + (cz * 16);
+
+        // X+ Side
+        if(x < 15 && ChunkInfo[cx][cz].BlockInfo[x + 1][y][z].getMaterial() == Material.AIR) {
+            GL11.glBegin(GL11.GL_LINE_LOOP);
+                GL11.glVertex3f(x + 1.01f, y, z + 1.01f);
+                GL11.glVertex3f(x + 1.01f, y + 1.01f, z + 1.01f);
+                GL11.glVertex3f(x + 1.01f, y + 1.01f, z);
+                GL11.glVertex3f(x + 1.01f, y, z);
+            GL11.glEnd();
+        }
+        else if(x == 15)
+            if (cx == TOTAL_CHUNKS)
+                renderXP(blockX, y, blockZ);
+            else if (ChunkInfo[cx + 1][cz].BlockInfo[x - 15][y][z].getMaterial() == Material.AIR)
+                renderXP(blockX, y, blockZ);
+
+        // X- Side
+        if(x > 0 && ChunkInfo[cx][cz].BlockInfo[x - 1][y][z].getMaterial() == Material.AIR)
+            renderXN(blockX, y, blockZ);
+        else if(x == 0)
+            if (cx == 0)
+                renderXN(blockX, y, blockZ);
+            else if (ChunkInfo[cx - 1][cz].BlockInfo[x + 15][y][z].getMaterial() == Material.AIR)
+                renderXN(blockX, y, blockZ);
+
+        // Y+ Side
+        if(y < 128 && ChunkInfo[cx][cz].BlockInfo[x][y + 1][z].getMaterial() == Material.AIR)
+            renderYP(blockX, y, blockZ);
+        else if(y == 128)
+            renderYP(blockX, y, blockZ);
+
+        // Y- Side
+        if(y > 0 && ChunkInfo[cx][cz].BlockInfo[x][y - 1][z].getMaterial() == Material.AIR)
+            renderYN(blockX, y, blockZ);
+        else if(y == 0)
+            renderYN(blockX, y, blockZ);
+
+        // Z+ Side
+        if(z < 15 && ChunkInfo[cx][cz].BlockInfo[x][y][z + 1].getMaterial() == Material.AIR)
+            renderZP(blockX, y, blockZ);
+        else if(z == 15)
+            if (cz == TOTAL_CHUNKS)
+                renderZP(blockX, y, blockZ);
+            else if (ChunkInfo[cx][cz + 1].BlockInfo[x][y][z - 15].getMaterial() == Material.AIR)
+                renderZP(blockX, y, blockZ);
+
+        // Z- Side
+        if(z > 0 && ChunkInfo[cx][cz].BlockInfo[x][y][z - 1].getMaterial() == Material.AIR)
+            renderZN(blockX, y, blockZ);
+        else if(z == 0)
+            if (cz == 0)
+                renderZN(blockX, y, blockZ);
+            else if (ChunkInfo[cx][cz - 1].BlockInfo[x][y][z + 15].getMaterial() == Material.AIR)
+                renderZN(blockX, y, blockZ);
+    }
+
 }
