@@ -60,7 +60,7 @@ public class Chunk
                     if (this.BlockInfo[x][y][z].getMaterial() != Material.AIR)
                     {
                         RenderBlock tempblock = new RenderBlock(this.BlockInfo[x][y][z]);
-                        tempblock.renderBase(x + (cx * 16), y, z + (cz * 16));
+                        tempblock.laglessRender(x, y, z, cx, cz);
                     }
                 }
             }
