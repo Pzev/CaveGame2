@@ -12,7 +12,7 @@ dependencies {
 
 jar {
 	manifest {
-		attributes	'Implementation-Title': 'CaveGame'
+		attributes	'Implementation-Title': 'CaveGame',
 					'Implementation-Version': version
 	}
 }
