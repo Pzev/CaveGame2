@@ -2,98 +2,118 @@ package com.cricketcraft.core.core;
 
 import com.cricketcraft.client.rendering.RenderWorld;
 
-import static com.cricketcraft.core.utils.constants.TimeInformation.*;
+import static java.util.concurrent.TimeUnit.NANOSECONDS;
 
 public class GameTick
 {
+    public static long startTime = System.currentTimeMillis();
+    public static long endTime;
 
-    public static void Milliseconds50()
+
+    protected static long milliTick = 0;
+
+   // protected static long millisecond50Tick = 0;
+    protected static long millisecond200Tick = 0;
+    //protected static float second1Tick = 0;
+    //protected static float second3Tick = 0;
+    //protected static float second10Tick = 0;
+    //protected static float second30Tick = 0;
+    //protected static float minute1Tick = 0;
+
+    public static void tick()
     {
-        if(System.nanoTime() / MILLION > Milliseconds50 + 50)
+        endTime = System.currentTimeMillis();
+        milliTick = endTime - startTime;
+        startTime = System.currentTimeMillis();
+
+        //millisecond50Tick += milliTick;
+        millisecond200Tick += milliTick;
+        //second1Tick += (milliTick / 1000f);
+        //second3Tick += (milliTick / 1000f);
+        //second10Tick += (milliTick / 1000f);
+        //second30Tick += (milliTick / 1000f);
+        //minute1Tick += (milliTick / 60000f);
+
+        /*
+        while(millisecond50Tick >= 50)
         {
-            while(System.nanoTime() / MILLION > Milliseconds50 + 50)
-            {
-                Milliseconds50 += 50;
-                // Add commands to be executed 20 times a second here
-
-
-            }
-            Milliseconds50 = System.nanoTime() / MILLION;
+            millisecond50Tick -= 50;
+            Milliseconds50();
         }
+        **/
+
+        while(millisecond200Tick >= 200)
+        {
+            millisecond200Tick -= 200;
+            Milliseconds200();
+        }
+
+        /*
+        while(second1Tick >= 1)
+        {
+            second1Tick -= 1;
+            Seconds1();
+        }
+
+        while(second3Tick >= 3)
+        {
+            second3Tick -= 3;
+            Seconds3();
+        }
+
+        while(second10Tick >= 10)
+        {
+            second10Tick -= 10;
+            Seconds10();
+        }
+
+        while(second30Tick >= 30)
+        {
+            second30Tick -= 30;
+            Seconds30();
+        }
+
+        while(minute1Tick >= 1)
+        {
+            minute1Tick -= 1;
+            Minutes1();
+        }
+        **/
     }
 
-    public static void Milliseconds200()
+
+    private static void Milliseconds50()
     {
-        if(System.nanoTime() / MILLION > Milliseconds200 + 200)
-        {
-            while(System.nanoTime() / MILLION > Milliseconds200 + 200)
-            {
-                Milliseconds200 += 200;
-                // Add commands to be executed 5 times a second here
 
-
-            }
-            Milliseconds200 = System.nanoTime() / MILLION;
-        }
     }
 
-    public static void Seconds1()
+    private static void Milliseconds200()
     {
-        if(System.nanoTime() / BILLION > Seconds1 + 1)
-        {
-            while(System.nanoTime() / BILLION > Seconds1 + 1)
-            {
-                Seconds1 += 1;
-                // Add commands to be executed 5 times a second here
-                RenderWorld.PrepBlocks();
-
-            }
-            Seconds1 = System.nanoTime() / BILLION;
-        }
+        RenderWorld.PrepBlocks();
     }
 
-    public static void Seconds3()
+    private static void Seconds1()
     {
-        if(System.nanoTime() / BILLION > Seconds3 + 3)
-        {
-            while(System.nanoTime() / BILLION > Seconds3 + 3)
-            {
-                Seconds3 += 3;
-                // Add commands to be executed 5 times a second here
 
-            }
-            Seconds3 = System.nanoTime() / BILLION;
-        }
     }
 
-    public static void Seconds10()
+    private static void Seconds3()
     {
-        if(System.nanoTime() / BILLION > Seconds3 + 10)
-        {
-            while(System.nanoTime() / BILLION > Seconds3 + 10)
-            {
-                Seconds3 += 10;
-                // Add commands to be executed 5 times a second here
 
-
-            }
-            Seconds3 = System.nanoTime() / BILLION;
-        }
     }
 
-    public static void Seconds30()
+    private static void Seconds10()
     {
-        if(System.nanoTime() / BILLION > Seconds3 + 30)
-        {
-            while(System.nanoTime() / BILLION > Seconds3 + 30)
-            {
-                Seconds3 += 30;
-                // Add commands to be executed 5 times a second here
 
-
-            }
-            Seconds3 = System.nanoTime() / BILLION;
-        }
     }
 
+    private static void Seconds30()
+    {
+
+    }
+
+    private static void Minutes1()
+    {
+
+    }
 }
