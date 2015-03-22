@@ -127,7 +127,7 @@ public class TextureLoader {
             throw new IOException("Cannot find: " + ref);
         }
 
-        BufferedImage bufferedImage = ImageIO.read(new BufferedInputStream(CaveGame.class.getClass().getClassLoader().getResourceAsStream(ref)));
+        BufferedImage bufferedImage = ImageIO.read(new BufferedInputStream(CaveGame.class.getClassLoader().getResourceAsStream(ref)));
         return bufferedImage;
     }
 

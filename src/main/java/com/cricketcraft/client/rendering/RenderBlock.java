@@ -3,21 +3,30 @@ package com.cricketcraft.client.rendering;
 import com.cricketcraft.CaveGame;
 import com.cricketcraft.core.blocks.Block;
 import com.cricketcraft.core.blocks.Material;
+<<<<<<< HEAD
 import org.lwjgl.input.Mouse;
+=======
+import com.cricketcraft.core.utils.TextureLoader;
+>>>>>>> master
 import org.lwjgl.opengl.GL11;
+
+import java.io.IOException;
+
 import static com.cricketcraft.core.utils.constants.BlockInformation.*;
 
 public class RenderBlock
 {
     private Block block;
+    private TextureLoader textureLoader;
 
     public RenderBlock(Block block){
         this.block = block;
+        textureLoader = new TextureLoader();
     }
 
     public void renderBase(int x, int y, int z, int cx, int cz)
     {
-        block.getMaterial().color();
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
 
         x = x + (cx * 16);
         z = z + (cz * 16);
@@ -28,36 +37,67 @@ public class RenderBlock
         GL11.glVertex3f(x + 1, y + 1, z + 1);
         GL11.glVertex3f(x + 1, y + 1, z);
         GL11.glVertex3f(x + 1, y, z);
+        try {
+            textureLoader.getTexture(block.getResourceName()).bind();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         // X- Side
         GL11.glVertex3f(x, y, z + 1);
         GL11.glVertex3f(x, y + 1, z + 1);
         GL11.glVertex3f(x, y + 1, z);
         GL11.glVertex3f(x, y, z);
+        try {
+            textureLoader.getTexture(block.getResourceName()).bind();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         // Y+ Side
         GL11.glVertex3f(x + 1, y + 1, z + 1);
         GL11.glVertex3f(x, y + 1, z + 1);
         GL11.glVertex3f(x, y + 1, z);
         GL11.glVertex3f(x + 1, y + 1, z);
+        try {
+            textureLoader.getTexture(block.getResourceName()).bind();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         // Y- Side
         GL11.glVertex3f(x + 1, y, z + 1);
         GL11.glVertex3f(x, y, z + 1);
         GL11.glVertex3f(x, y, z);
         GL11.glVertex3f(x + 1, y, z);
+        try {
+            textureLoader.getTexture(block.getResourceName()).bind();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         // Z+ Side
         GL11.glVertex3f(x + 1, y + 1, z + 1);
         GL11.glVertex3f(x, y + 1, z + 1);
         GL11.glVertex3f(x, y, z + 1);
         GL11.glVertex3f(x + 1, y, z + 1);
+        try {
+            textureLoader.getTexture(block.getResourceName()).bind();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         // Z- Side
         GL11.glVertex3f(x + 1, y + 1, z);
         GL11.glVertex3f(x, y + 1, z);
         GL11.glVertex3f(x, y, z);
         GL11.glVertex3f(x + 1, y, z);
+        try {
+            textureLoader.getTexture(block.getResourceName()).bind();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
         GL11.glEnd();
     }
 
@@ -107,13 +147,19 @@ public class RenderBlock
 
     public void renderXP(int x, int y, int z)
     {
-        block.getMaterial().color();
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
         // X+ Side
         GL11.glBegin(GL11.GL_QUADS);
         GL11.glVertex3f(x + 1, y, z + 1);
         GL11.glVertex3f(x + 1, y + 1, z + 1);
         GL11.glVertex3f(x + 1, y + 1, z);
         GL11.glVertex3f(x + 1, y, z);
+        try {
+            textureLoader.getTexture(block.getResourceName()).bind();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
         GL11.glEnd();
     }
 
@@ -132,13 +178,19 @@ public class RenderBlock
 
     public void renderXN(int x, int y, int z)
     {
-        block.getMaterial().color();
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
         // X- Side
         GL11.glBegin(GL11.GL_QUADS);
         GL11.glVertex3f(x, y, z + 1);
         GL11.glVertex3f(x, y + 1, z + 1);
         GL11.glVertex3f(x, y + 1, z);
         GL11.glVertex3f(x, y, z);
+        try {
+            textureLoader.getTexture(block.getResourceName()).bind();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
         GL11.glEnd();
     }
 
@@ -157,13 +209,19 @@ public class RenderBlock
 
     public void renderYP(int x, int y, int z)
     {
-        block.getMaterial().color();
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
         // Y+ Side
         GL11.glBegin(GL11.GL_QUADS);
         GL11.glVertex3f(x + 1, y + 1, z + 1);
         GL11.glVertex3f(x, y + 1, z + 1);
         GL11.glVertex3f(x, y + 1, z);
         GL11.glVertex3f(x + 1, y + 1, z);
+        try {
+            textureLoader.getTexture(block.getResourceName()).bind();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
         GL11.glEnd();
     }
 
@@ -182,13 +240,19 @@ public class RenderBlock
 
     public void renderYN(int x, int y, int z)
     {
-        block.getMaterial().color();
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
         // Y- Side
         GL11.glBegin(GL11.GL_QUADS);
         GL11.glVertex3f(x + 1, y, z + 1);
         GL11.glVertex3f(x, y, z + 1);
         GL11.glVertex3f(x, y, z);
         GL11.glVertex3f(x + 1, y, z);
+        try {
+            textureLoader.getTexture(block.getResourceName()).bind();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
         GL11.glEnd();
     }
 
@@ -207,13 +271,19 @@ public class RenderBlock
 
     public void renderZP(int x, int y, int z)
     {
-        block.getMaterial().color();
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
         // Z+ Side
         GL11.glBegin(GL11.GL_QUADS);
         GL11.glVertex3f(x + 1, y + 1, z + 1);
         GL11.glVertex3f(x, y + 1, z + 1);
         GL11.glVertex3f(x, y, z + 1);
         GL11.glVertex3f(x + 1, y, z + 1);
+        try {
+            textureLoader.getTexture(block.getResourceName()).bind();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
         GL11.glEnd();
     }
 
@@ -232,13 +302,19 @@ public class RenderBlock
 
     public void renderZN(int x, int y, int z)
     {
-        block.getMaterial().color();
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
         // Z- Side
         GL11.glBegin(GL11.GL_QUADS);
         GL11.glVertex3f(x + 1, y + 1, z);
         GL11.glVertex3f(x, y + 1, z);
         GL11.glVertex3f(x, y, z);
         GL11.glVertex3f(x + 1, y, z);
+        try {
+            textureLoader.getTexture(block.getResourceName()).bind();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
         GL11.glEnd();
     }
 
