@@ -51,6 +51,7 @@ public class Chunk
 
     public void renderChunk(int cx, int cz)
     {
+        RenderBlock tempblock = new RenderBlock(this.BlockInfo[0][0][0]);
         for (int x = 0; x < 16; x++)
         {
             for (int z = 0; z < 16; z++)
@@ -59,7 +60,7 @@ public class Chunk
                 {
                     if (this.BlockInfo[x][y][z].getMaterial() != Material.AIR)
                     {
-                        RenderBlock tempblock = new RenderBlock(this.BlockInfo[x][y][z]);
+                        tempblock = new RenderBlock(this.BlockInfo[x][y][z]);
                         tempblock.laglessRender(x, y, z, cx, cz);
                     }
                 }

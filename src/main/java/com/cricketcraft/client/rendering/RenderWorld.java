@@ -24,6 +24,7 @@ public class RenderWorld {
                     {
                         Chunk chunk = ChunkInfo[cx][cz];
                         chunk.renderChunk(cx, cz);
+                        //RenderBlock.wireFrame();
                     }
                 }
             }
