@@ -4,6 +4,7 @@ import com.cricketcraft.CaveGame;
 import com.cricketcraft.core.blocks.Block;
 import com.cricketcraft.core.blocks.Material;
 import com.cricketcraft.core.core.Chunk;
+import com.cricketcraft.core.init.Blocks;
 
 import static com.cricketcraft.core.utils.constants.BlockInformation.*;
 
@@ -48,25 +49,21 @@ public class RenderWorld {
                                 {
                                     for (int y = 0; y < 128; y++)
                                     {
-                                        Block tempBlock = new Block(Material.AIR);
                                         if ((y == 0 || y == 1 || y == 2) && chunk.BlockInfo[x][y][z] == null)
                                         {
-                                            tempBlock = new Block(Material.STONE);
-                                            chunk.addBlock(x, y, z, tempBlock);
+                                            chunk.addBlock(x, y, z, Blocks.stone);
                                         }
                                         else if ((y == 3 || y == 4 || y == 5) && chunk.BlockInfo[x][y][z] == null)
                                         {
-                                            tempBlock = new Block(Material.DIRT);
-                                            chunk.addBlock(x, y, z, tempBlock);
+                                            chunk.addBlock(x, y, z, Blocks.dirt);
                                         }
                                         else if ((y == 6) && chunk.BlockInfo[x][y][z] == null)
                                         {
-                                            tempBlock = new Block(Material.GRASS);
-                                            chunk.addBlock(x, y, z, tempBlock);
+                                            chunk.addBlock(x, y, z, Blocks.grass);
                                         }
                                         else if (chunk.BlockInfo[x][y][z] == null)
                                         {
-                                            chunk.addBlock(x, y, z, tempBlock);
+                                            chunk.addBlock(x, y, z, Blocks.air);
                                         }
                                     }
                                 }
