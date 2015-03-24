@@ -16,7 +16,7 @@ public class Blocks {
 
     }
 
-    public void preInit(){
+    public static void preInit(){
         air = new Block(Material.AIR);
         stone = new Block(Material.STONE);
         dirt = new Block(Material.DIRT);
@@ -25,7 +25,7 @@ public class Blocks {
         wood = new Block(Material.WOOD);
     }
 
-    public void init(){
+    public static void init(){
         air.setResourceName(TexturePrefix.block + "null.png");
         stone.setResourceName(TexturePrefix.block + "stone.png");
         dirt.setResourceName(TexturePrefix.block + "dirt.png");

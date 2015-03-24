@@ -1,6 +1,7 @@
 package com.cricketcraft.cavegame;
 
 import com.cricketcraft.cavegame.client.rendering.PrepDisplay;
+import com.cricketcraft.cavegame.core.init.Blocks;
 import com.cricketcraft.cavegame.core.world.World;
 
 public class CaveGame
@@ -21,12 +22,12 @@ public class CaveGame
         PrepDisplay displayPrep = new PrepDisplay();
         displayPrep.prepDisplay();
 
-        
+        Blocks.preInit();
     }
 
     public static void init()
     {
-
+        Blocks.init();
 
     }
 
