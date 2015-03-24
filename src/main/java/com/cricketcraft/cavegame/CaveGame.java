@@ -17,24 +17,20 @@ public class CaveGame
 
     public static void preInit()
     {
+        System.out.println(CaveGame.class);
         theWorld.World();
-
-        PrepDisplay displayPrep = new PrepDisplay();
-        displayPrep.prepDisplay();
-
         Blocks.preInit();
     }
 
     public static void init()
     {
         Blocks.init();
-
     }
 
     public static void postInit()
     {
-
-
+        PrepDisplay displayPrep = new PrepDisplay();
+        displayPrep.prepDisplay();
     }
 
     public static World getWorld(){
