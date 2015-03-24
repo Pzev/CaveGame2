@@ -1,5 +1,7 @@
-package com.cricketcraft.cavegame.core.block;
+package com.cricketcraft.cavegame.core.init;
 
+import com.cricketcraft.cavegame.core.block.Block;
+import com.cricketcraft.cavegame.core.block.Material;
 import com.cricketcraft.cavegame.core.util.constants.TexturePrefix;
 
 public class Blocks {

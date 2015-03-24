@@ -2,7 +2,7 @@ package com.cricketcraft.cavegame.client.rendering;
 
 import com.cricketcraft.cavegame.CaveGame;
 import com.cricketcraft.cavegame.core.world.Chunk;
-import com.cricketcraft.cavegame.core.block.Blocks;
+import com.cricketcraft.cavegame.core.init.Blocks;
 
 import static com.cricketcraft.cavegame.core.util.constants.BlockInformation.*;
 
