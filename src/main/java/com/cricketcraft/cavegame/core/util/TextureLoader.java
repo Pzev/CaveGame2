@@ -61,11 +61,10 @@ public class TextureLoader {
 
         ByteBuffer byteBuffer = convertImageData(bufferedImage, texture);
 
-        if(target == GL11.GL_TEXTURE_2D){
+        if(target == GL11.GL_TEXTURE_2D) {
             GL11.glTexParameteri(target, GL11.GL_TEXTURE_MIN_FILTER, minFilter);
             GL11.glTexParameteri(target, GL11.GL_TEXTURE_MAG_FILTER, magFilter);
         }
-
         GL11.glTexImage2D(target, 0, dstPixelFormat, get2Fold(bufferedImage.getWidth()), get2Fold(bufferedImage.getHeight()), 0, srcPixelFormat, GL11.GL_UNSIGNED_BYTE, byteBuffer);
         return texture;
     }
@@ -112,7 +111,7 @@ public class TextureLoader {
 
         byte[] data = ((DataBufferByte) texImage.getRaster().getDataBuffer()).getData();
 
-        imageBuffer = ByteBuffer.allocate(data.length);
+        imageBuffer = ByteBuffer.allocateDirect(data.length);
         imageBuffer.order(ByteOrder.nativeOrder());
         imageBuffer.put(data, 0, data.length);
         imageBuffer.flip();

@@ -17,7 +17,6 @@ public class CaveGame
 
     public static void preInit()
     {
-        System.out.println(CaveGame.class);
         theWorld.World();
         Blocks.preInit();
     }
