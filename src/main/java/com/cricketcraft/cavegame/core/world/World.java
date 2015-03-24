@@ -1,6 +1,7 @@
 package com.cricketcraft.cavegame.core.world;
 
 import com.cricketcraft.cavegame.core.entity.EntityClientPlayer;
+import static com.cricketcraft.cavegame.core.util.constants.BlockInformation.*;
 
 public class World {
 
