@@ -66,6 +66,7 @@ public class TextureLoader {
             GL11.glTexParameteri(target, GL11.GL_TEXTURE_MAG_FILTER, magFilter);
         }
         GL11.glTexImage2D(target, 0, dstPixelFormat, get2Fold(bufferedImage.getWidth()), get2Fold(bufferedImage.getHeight()), 0, srcPixelFormat, GL11.GL_UNSIGNED_BYTE, byteBuffer);
+        GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
         return texture;
     }
 

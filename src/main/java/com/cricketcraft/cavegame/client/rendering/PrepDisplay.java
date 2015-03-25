@@ -44,15 +44,15 @@ public class PrepDisplay
         Display.update();
 
         CaveGame.getWorld().thePlayer.prepChunkData();
-        RenderWorld.PrepBlocks();
+        //RenderWorld.PrepBlocks();
         GameTick ticker = new GameTick();
 
         while (!Display.isCloseRequested()) {
             GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 
             ticker.tick();
-
-            RenderWorld.AllBlocks();
+            RenderWorld.renderTest();
+            //RenderWorld.AllBlocks();
 
             AllMouse.sky(100);
 

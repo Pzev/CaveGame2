@@ -1,6 +1,8 @@
 package com.cricketcraft.cavegame.client.rendering;
 
 import com.cricketcraft.cavegame.CaveGame;
+import com.cricketcraft.cavegame.core.block.Block;
+import com.cricketcraft.cavegame.core.block.Material;
 import com.cricketcraft.cavegame.core.world.Chunk;
 import com.cricketcraft.cavegame.core.init.Blocks;
 
@@ -104,6 +106,19 @@ public class RenderWorld {
         {
             zMin = CaveGame.getWorld().thePlayer.getChunkZ() - CaveGame.getWorld().thePlayer.getRenderDistance() - 2;
         }
+    }
+
+    public static void renderTest()
+    {
+        RenderBlock blockAir = new RenderBlock(Blocks.air);
+        RenderBlock blockStone = new RenderBlock(Blocks.stone);
+        RenderBlock blockDirt = new RenderBlock(Blocks.dirt);
+        RenderBlock blockGrass = new RenderBlock(Blocks.grass);
+
+        blockAir.renderBase(5, -4, 7);
+        blockStone.renderBase(5, -2, 7);
+        blockDirt.renderBase(5, 0, 7);
+        blockGrass.renderBase(5, 2, 7);
     }
 
 }
