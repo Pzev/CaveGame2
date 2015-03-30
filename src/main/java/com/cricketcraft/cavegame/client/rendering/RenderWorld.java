@@ -115,10 +115,10 @@ public class RenderWorld {
         RenderBlock blockDirt = new RenderBlock(Blocks.dirt);
         RenderBlock blockGrass = new RenderBlock(Blocks.grass);
 
-        blockAir.renderBase(5, -4, 7);
-        blockStone.renderBase(5, -2, 7);
-        blockDirt.renderBase(5, 0, 7);
-        blockGrass.renderBase(5, 2, 7);
+        blockAir.renderBase(5, 8, -3);
+        blockStone.renderBase(5, 8, -1);
+        blockDirt.renderBase(5, 8, 1);
+        blockGrass.renderBase(5, 8, 3);
     }
 
 }

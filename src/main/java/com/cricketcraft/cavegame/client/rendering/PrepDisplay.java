@@ -26,6 +26,7 @@ public class PrepDisplay
             System.exit(0);
         }
 
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
         GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glDepthFunc(GL11.GL_LEQUAL);
         GL11.glMatrixMode(GL11.GL_PROJECTION);
