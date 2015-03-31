@@ -29,89 +29,81 @@ public class RenderBlock
         } catch (IOException e) {
             e.printStackTrace();
         }
-        GL11.glEnable(GL11.GL_TEXTURE_2D);
 
         x = x + (cx * 16);
         z = z + (cz * 16);
 
         // X+ Side
         GL11.glBegin(GL11.GL_QUADS);
-        GL11.glTexCoord2f(0, 0);
-        GL11.glVertex3f(x + 1, y, z + 1);
-        GL11.glTexCoord2f(0, 1);
-        GL11.glVertex3f(x + 1, y + 1, z + 1);
-        GL11.glTexCoord2f(1, 1);
-        GL11.glVertex3f(x + 1, y + 1, z);
         GL11.glTexCoord2f(1, 0);
+        GL11.glVertex3f(x + 1, y, z + 1);
+        GL11.glTexCoord2f(1, 1);
+        GL11.glVertex3f(x + 1, y + 1, z + 1);
+        GL11.glTexCoord2f(0, 1);
+        GL11.glVertex3f(x + 1, y + 1, z);
+        GL11.glTexCoord2f(0, 0);
         GL11.glVertex3f(x + 1, y, z);
         GL11.glEnd();
 
         // X- Side
         GL11.glBegin(GL11.GL_QUADS);
+        GL11.glTexCoord2f(0, 0);
         GL11.glVertex3f(x, y, z + 1);
+        GL11.glTexCoord2f(0, 1);
         GL11.glVertex3f(x, y + 1, z + 1);
+        GL11.glTexCoord2f(1, 1);
         GL11.glVertex3f(x, y + 1, z);
+        GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x, y, z);
-        try {
-            textureLoader.getTexture(block.getResourceName()).bind();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         GL11.glEnd();
 
         // Y+ Side
         GL11.glBegin(GL11.GL_QUADS);
+        GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x + 1, y + 1, z + 1);
+        GL11.glTexCoord2f(1, 1);
         GL11.glVertex3f(x, y + 1, z + 1);
+        GL11.glTexCoord2f(0, 1);
         GL11.glVertex3f(x, y + 1, z);
+        GL11.glTexCoord2f(0, 0);
         GL11.glVertex3f(x + 1, y + 1, z);
-        try {
-            textureLoader.getTexture(block.getResourceName()).bind();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         GL11.glEnd();
 
         // Y- Side
         GL11.glBegin(GL11.GL_QUADS);
+        GL11.glTexCoord2f(0, 0);
         GL11.glVertex3f(x + 1, y, z + 1);
+        GL11.glTexCoord2f(0, 1);
         GL11.glVertex3f(x, y, z + 1);
+        GL11.glTexCoord2f(1, 1);
         GL11.glVertex3f(x, y, z);
+        GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x + 1, y, z);
-        try {
-            textureLoader.getTexture(block.getResourceName()).bind();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         GL11.glEnd();
 
         // Z+ Side
         GL11.glBegin(GL11.GL_QUADS);
+        GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x + 1, y + 1, z + 1);
+        GL11.glTexCoord2f(1, 1);
         GL11.glVertex3f(x, y + 1, z + 1);
+        GL11.glTexCoord2f(0, 1);
         GL11.glVertex3f(x, y, z + 1);
+        GL11.glTexCoord2f(0, 0);
         GL11.glVertex3f(x + 1, y, z + 1);
-        try {
-            textureLoader.getTexture(block.getResourceName()).bind();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         GL11.glEnd();
 
         // Z- Side
         GL11.glBegin(GL11.GL_QUADS);
+        GL11.glTexCoord2f(0, 0);
         GL11.glVertex3f(x + 1, y + 1, z);
+        GL11.glTexCoord2f(0, 1);
         GL11.glVertex3f(x, y + 1, z);
+        GL11.glTexCoord2f(1, 1);
         GL11.glVertex3f(x, y, z);
+        GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x + 1, y, z);
-        try {
-            textureLoader.getTexture(block.getResourceName()).bind();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         GL11.glEnd();
-
-        GL11.glDisable(GL11.GL_TEXTURE_2D);
     }
 
     public void renderBase(int x, int y, int z)
@@ -124,57 +116,73 @@ public class RenderBlock
 
         // X+ Side
         GL11.glBegin(GL11.GL_QUADS);
-        GL11.glTexCoord2f(0, 1);
-        GL11.glVertex3f(x + 1, y, z + 1);
-        GL11.glTexCoord2f(0, 0);
-        GL11.glVertex3f(x + 1, y + 1, z + 1);
         GL11.glTexCoord2f(1, 0);
-        GL11.glVertex3f(x + 1, y + 1, z);
+        GL11.glVertex3f(x + 1, y, z + 1);
         GL11.glTexCoord2f(1, 1);
+        GL11.glVertex3f(x + 1, y + 1, z + 1);
+        GL11.glTexCoord2f(0, 1);
+        GL11.glVertex3f(x + 1, y + 1, z);
+        GL11.glTexCoord2f(0, 0);
         GL11.glVertex3f(x + 1, y, z);
         GL11.glEnd();
 
         // X- Side
         GL11.glBegin(GL11.GL_QUADS);
-        GL11.glTexCoord2f(0, 1);
-        GL11.glVertex3f(x, y, z + 1);
         GL11.glTexCoord2f(0, 0);
+        GL11.glVertex3f(x, y, z + 1);
+        GL11.glTexCoord2f(0, 1);
         GL11.glVertex3f(x, y + 1, z + 1);
-        GL11.glTexCoord2f(1, 0);
-        GL11.glVertex3f(x, y + 1, z);
         GL11.glTexCoord2f(1, 1);
+        GL11.glVertex3f(x, y + 1, z);
+        GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x, y, z);
         GL11.glEnd();
 
         // Y+ Side
         GL11.glBegin(GL11.GL_QUADS);
+        GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x + 1, y + 1, z + 1);
+        GL11.glTexCoord2f(1, 1);
         GL11.glVertex3f(x, y + 1, z + 1);
+        GL11.glTexCoord2f(0, 1);
         GL11.glVertex3f(x, y + 1, z);
+        GL11.glTexCoord2f(0, 0);
         GL11.glVertex3f(x + 1, y + 1, z);
         GL11.glEnd();
 
         // Y- Side
         GL11.glBegin(GL11.GL_QUADS);
+        GL11.glTexCoord2f(0, 0);
         GL11.glVertex3f(x + 1, y, z + 1);
+        GL11.glTexCoord2f(0, 1);
         GL11.glVertex3f(x, y, z + 1);
+        GL11.glTexCoord2f(1, 1);
         GL11.glVertex3f(x, y, z);
+        GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x + 1, y, z);
         GL11.glEnd();
 
         // Z+ Side
         GL11.glBegin(GL11.GL_QUADS);
+        GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x + 1, y + 1, z + 1);
+        GL11.glTexCoord2f(1, 1);
         GL11.glVertex3f(x, y + 1, z + 1);
+        GL11.glTexCoord2f(0, 1);
         GL11.glVertex3f(x, y, z + 1);
+        GL11.glTexCoord2f(0, 0);
         GL11.glVertex3f(x + 1, y, z + 1);
         GL11.glEnd();
 
         // Z- Side
         GL11.glBegin(GL11.GL_QUADS);
+        GL11.glTexCoord2f(0, 0);
         GL11.glVertex3f(x + 1, y + 1, z);
+        GL11.glTexCoord2f(0, 1);
         GL11.glVertex3f(x, y + 1, z);
+        GL11.glTexCoord2f(1, 1);
         GL11.glVertex3f(x, y, z);
+        GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x + 1, y, z);
         GL11.glEnd();
 
@@ -226,7 +234,6 @@ public class RenderBlock
 
     public void renderXP(int x, int y, int z)
     {
-        GL11.glPushMatrix();
         try {
             textureLoader.getTexture(block.getResourceName()).bind();
         } catch (Exception e) {
@@ -237,15 +244,13 @@ public class RenderBlock
         GL11.glBegin(GL11.GL_QUADS);
         GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x + 1, y, z + 1);
-        GL11.glTexCoord2f(0, 0);
+        GL11.glTexCoord2f(1, 1);
         GL11.glVertex3f(x + 1, y + 1, z + 1);
         GL11.glTexCoord2f(0, 1);
         GL11.glVertex3f(x + 1, y + 1, z);
-        GL11.glTexCoord2f(1, 1);
+        GL11.glTexCoord2f(0, 0);
         GL11.glVertex3f(x + 1, y, z);
         GL11.glEnd();
-
-        GL11.glPopMatrix();
     }
 
     public void renderXPWire(int x, int y, int z)
@@ -268,11 +273,16 @@ public class RenderBlock
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         // X- Side
         GL11.glBegin(GL11.GL_QUADS);
+        GL11.glTexCoord2f(0, 0);
         GL11.glVertex3f(x, y, z + 1);
+        GL11.glTexCoord2f(0, 1);
         GL11.glVertex3f(x, y + 1, z + 1);
+        GL11.glTexCoord2f(1, 1);
         GL11.glVertex3f(x, y + 1, z);
+        GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x, y, z);
         GL11.glEnd();
     }
@@ -299,9 +309,13 @@ public class RenderBlock
         }
         // Y+ Side
         GL11.glBegin(GL11.GL_QUADS);
+        GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x + 1, y + 1, z + 1);
+        GL11.glTexCoord2f(1, 1);
         GL11.glVertex3f(x, y + 1, z + 1);
+        GL11.glTexCoord2f(0, 1);
         GL11.glVertex3f(x, y + 1, z);
+        GL11.glTexCoord2f(0, 0);
         GL11.glVertex3f(x + 1, y + 1, z);
         GL11.glEnd();
     }
@@ -328,9 +342,13 @@ public class RenderBlock
         }
         // Y- Side
         GL11.glBegin(GL11.GL_QUADS);
+        GL11.glTexCoord2f(0, 0);
         GL11.glVertex3f(x + 1, y, z + 1);
+        GL11.glTexCoord2f(0, 1);
         GL11.glVertex3f(x, y, z + 1);
+        GL11.glTexCoord2f(1, 1);
         GL11.glVertex3f(x, y, z);
+        GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x + 1, y, z);
         GL11.glEnd();
     }
@@ -357,9 +375,13 @@ public class RenderBlock
         }
         // Z+ Side
         GL11.glBegin(GL11.GL_QUADS);
+        GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x + 1, y + 1, z + 1);
+        GL11.glTexCoord2f(1, 1);
         GL11.glVertex3f(x, y + 1, z + 1);
+        GL11.glTexCoord2f(0, 1);
         GL11.glVertex3f(x, y, z + 1);
+        GL11.glTexCoord2f(0, 0);
         GL11.glVertex3f(x + 1, y, z + 1);
         GL11.glEnd();
     }
@@ -386,9 +408,13 @@ public class RenderBlock
         }
         // Z- Side
         GL11.glBegin(GL11.GL_QUADS);
+        GL11.glTexCoord2f(0, 0);
         GL11.glVertex3f(x + 1, y + 1, z);
+        GL11.glTexCoord2f(0, 1);
         GL11.glVertex3f(x, y + 1, z);
+        GL11.glTexCoord2f(1, 1);
         GL11.glVertex3f(x, y, z);
+        GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x + 1, y, z);
         GL11.glEnd();
     }

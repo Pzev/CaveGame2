@@ -46,7 +46,7 @@ public class Chunk
 
     public void renderChunk(int cx, int cz)
     {
-        RenderBlock tempblock = new RenderBlock(this.BlockInfo[0][0][0]);
+        RenderBlock tempblock;
         for (int x = 0; x < 16; x++)
         {
             for (int z = 0; z < 16; z++)

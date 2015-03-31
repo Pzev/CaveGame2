@@ -39,12 +39,13 @@ public class TextureLoader {
             return texture;
         }
 
-        texture = getTexture(resourceName, GL11.GL_TEXTURE_2D, GL11.GL_RGBA, GL11.GL_LINEAR, GL11.GL_LINEAR);
+        texture = getTexture(resourceName, GL11.GL_TEXTURE_2D, GL11.GL_RGBA, GL11.GL_NEAREST, GL11.GL_NEAREST);
         table.put(resourceName, texture);
         return texture;
     }
 
     public Texture getTexture(String resourceName, int target, int dstPixelFormat, int minFilter, int magFilter) throws IOException{
+        GL11.glColor4f(1, 1, 1, 1);
         int srcPixelFormat = 0;
         int textureID = createTextureID();
         Texture texture = new Texture(target, textureID);

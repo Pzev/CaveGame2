@@ -5,12 +5,14 @@ import com.cricketcraft.cavegame.core.block.Block;
 import com.cricketcraft.cavegame.core.block.Material;
 import com.cricketcraft.cavegame.core.world.Chunk;
 import com.cricketcraft.cavegame.core.init.Blocks;
+import org.lwjgl.opengl.GL11;
 
 import static com.cricketcraft.cavegame.core.util.constants.BlockInformation.*;
 
 public class RenderWorld {
     public static void AllBlocks()
     {
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
         setRenderMins();
 
         for (int cx = xMin; cx < (xMin + (CaveGame.getWorld().thePlayer.getRenderDistance() * 2) + 4); cx++)
@@ -28,6 +30,7 @@ public class RenderWorld {
                 }
             }
         }
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
     }
 
     public static void PrepBlocks()
@@ -110,6 +113,7 @@ public class RenderWorld {
 
     public static void renderTest()
     {
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
         RenderBlock blockAir = new RenderBlock(Blocks.air);
         RenderBlock blockStone = new RenderBlock(Blocks.stone);
         RenderBlock blockDirt = new RenderBlock(Blocks.dirt);
@@ -119,6 +123,7 @@ public class RenderWorld {
         blockStone.renderBase(5, 8, -1);
         blockDirt.renderBase(5, 8, 1);
         blockGrass.renderBase(5, 8, 3);
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
     }
 
 }
