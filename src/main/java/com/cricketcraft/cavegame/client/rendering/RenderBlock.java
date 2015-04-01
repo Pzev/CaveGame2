@@ -236,7 +236,6 @@ public class RenderBlock
     {
 
         // X+ Side
-        GL11.glBegin(GL11.GL_QUADS);
         GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x + 1, y, z + 1);
         GL11.glTexCoord2f(1, 1);
@@ -245,7 +244,6 @@ public class RenderBlock
         GL11.glVertex3f(x + 1, y + 1, z);
         GL11.glTexCoord2f(0, 0);
         GL11.glVertex3f(x + 1, y, z);
-        GL11.glEnd();
     }
 
     public void renderXPWire(int x, int y, int z)
@@ -265,7 +263,6 @@ public class RenderBlock
     {
 
         // X- Side
-        GL11.glBegin(GL11.GL_QUADS);
         GL11.glTexCoord2f(0, 0);
         GL11.glVertex3f(x, y, z + 1);
         GL11.glTexCoord2f(0, 1);
@@ -274,7 +271,6 @@ public class RenderBlock
         GL11.glVertex3f(x, y + 1, z);
         GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x, y, z);
-        GL11.glEnd();
     }
 
     public void renderXNWire(int x, int y, int z)
@@ -294,7 +290,6 @@ public class RenderBlock
     {
 
         // Y+ Side
-        GL11.glBegin(GL11.GL_QUADS);
         GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x + 1, y + 1, z + 1);
         GL11.glTexCoord2f(1, 1);
@@ -303,7 +298,6 @@ public class RenderBlock
         GL11.glVertex3f(x, y + 1, z);
         GL11.glTexCoord2f(0, 0);
         GL11.glVertex3f(x + 1, y + 1, z);
-        GL11.glEnd();
     }
 
     public void renderYPWire(int x, int y, int z)
@@ -323,7 +317,6 @@ public class RenderBlock
     {
 
         // Y- Side
-        GL11.glBegin(GL11.GL_QUADS);
         GL11.glTexCoord2f(0, 0);
         GL11.glVertex3f(x + 1, y, z + 1);
         GL11.glTexCoord2f(0, 1);
@@ -332,7 +325,6 @@ public class RenderBlock
         GL11.glVertex3f(x, y, z);
         GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x + 1, y, z);
-        GL11.glEnd();
     }
 
     public void renderYNWire(int x, int y, int z)
@@ -352,7 +344,6 @@ public class RenderBlock
     {
 
         // Z+ Side
-        GL11.glBegin(GL11.GL_QUADS);
         GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x + 1, y + 1, z + 1);
         GL11.glTexCoord2f(1, 1);
@@ -361,7 +352,6 @@ public class RenderBlock
         GL11.glVertex3f(x, y, z + 1);
         GL11.glTexCoord2f(0, 0);
         GL11.glVertex3f(x + 1, y, z + 1);
-        GL11.glEnd();
     }
 
     public void renderZPWire(int x, int y, int z)
@@ -381,7 +371,6 @@ public class RenderBlock
     {
 
         // Z- Side
-        GL11.glBegin(GL11.GL_QUADS);
         GL11.glTexCoord2f(0, 0);
         GL11.glVertex3f(x + 1, y + 1, z);
         GL11.glTexCoord2f(0, 1);
@@ -390,7 +379,6 @@ public class RenderBlock
         GL11.glVertex3f(x, y, z);
         GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x + 1, y, z);
-        GL11.glEnd();
     }
 
     public void renderZNWire(int x, int y, int z)
@@ -412,6 +400,7 @@ public class RenderBlock
         int blockZ = z + (cz * 16);
 
         // X+ Side
+        GL11.glBegin(GL11.GL_QUADS);
         if(x < 15 && ChunkInfo[cx][cz].BlockInfo[x + 1][y][z].getMaterial() == Material.AIR)
             renderXP(blockX, y, blockZ);
         else if(x == 15)
@@ -458,6 +447,7 @@ public class RenderBlock
                 renderZN(blockX, y, blockZ);
             else if (ChunkInfo[cx][cz - 1].BlockInfo[x][y][z + 15].getMaterial() == Material.AIR)
                 renderZN(blockX, y, blockZ);
+        GL11.glEnd();
     }
 
     // Init in RenderWorld Class
