@@ -234,11 +234,6 @@ public class RenderBlock
 
     public void renderXP(int x, int y, int z)
     {
-        try {
-            textureLoader.getTexture(block.getResourceName()).bind();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         // X+ Side
         GL11.glBegin(GL11.GL_QUADS);
@@ -268,11 +263,6 @@ public class RenderBlock
 
     public void renderXN(int x, int y, int z)
     {
-        try {
-            textureLoader.getTexture(block.getResourceName()).bind();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         // X- Side
         GL11.glBegin(GL11.GL_QUADS);
@@ -302,11 +292,7 @@ public class RenderBlock
 
     public void renderYP(int x, int y, int z)
     {
-        try {
-            textureLoader.getTexture(block.getResourceName()).bind();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
         // Y+ Side
         GL11.glBegin(GL11.GL_QUADS);
         GL11.glTexCoord2f(1, 0);
@@ -335,11 +321,7 @@ public class RenderBlock
 
     public void renderYN(int x, int y, int z)
     {
-        try {
-            textureLoader.getTexture(block.getResourceName()).bind();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
         // Y- Side
         GL11.glBegin(GL11.GL_QUADS);
         GL11.glTexCoord2f(0, 0);
@@ -368,11 +350,7 @@ public class RenderBlock
 
     public void renderZP(int x, int y, int z)
     {
-        try {
-            textureLoader.getTexture(block.getResourceName()).bind();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
         // Z+ Side
         GL11.glBegin(GL11.GL_QUADS);
         GL11.glTexCoord2f(1, 0);
@@ -401,11 +379,7 @@ public class RenderBlock
 
     public void renderZN(int x, int y, int z)
     {
-        try {
-            textureLoader.getTexture(block.getResourceName()).bind();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
         // Z- Side
         GL11.glBegin(GL11.GL_QUADS);
         GL11.glTexCoord2f(0, 0);

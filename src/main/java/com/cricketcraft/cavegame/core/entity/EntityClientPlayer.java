@@ -11,7 +11,7 @@ public class EntityClientPlayer {
     protected float eyeY;
     protected float eyeZ;
 
-    public int renderDistance = 1;
+    public int renderDistance = 2;
 
     protected int chunkXPrevious;
     protected int chunkZPrevious;

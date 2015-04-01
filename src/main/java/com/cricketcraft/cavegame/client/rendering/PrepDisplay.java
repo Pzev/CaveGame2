@@ -44,7 +44,7 @@ public class PrepDisplay
         Display.update();
 
         CaveGame.getWorld().thePlayer.prepChunkData();
-        //RenderWorld.PrepBlocks();
+        RenderWorld.PrepBlocks();
         GameTick ticker = new GameTick();
 
         while (!Display.isCloseRequested()) {
@@ -52,7 +52,7 @@ public class PrepDisplay
 
             ticker.tick();
             RenderWorld.renderTest();
-            //RenderWorld.AllBlocks();
+            RenderWorld.AllBlocks();
 
             AllMouse.sky(100);
 

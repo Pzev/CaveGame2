@@ -24,7 +24,7 @@ public class RenderWorld {
                     if(ChunkInfo[cx][cz] != null)
                     {
                         Chunk chunk = ChunkInfo[cx][cz];
-                        chunk.renderChunk(cx, cz);
+                        chunk.renderChunkLagTest(cx, cz);
                         //RenderBlock.wireFrame();
                     }
                 }

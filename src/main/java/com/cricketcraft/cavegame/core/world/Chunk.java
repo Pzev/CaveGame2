@@ -3,6 +3,9 @@ package com.cricketcraft.cavegame.core.world;
 import com.cricketcraft.cavegame.client.rendering.RenderBlock;
 import com.cricketcraft.cavegame.core.block.Block;
 import com.cricketcraft.cavegame.core.block.Material;
+import com.cricketcraft.cavegame.core.util.TextureLoader;
+
+import java.io.IOException;
 
 public class Chunk
 {
@@ -54,6 +57,75 @@ public class Chunk
                 for (int y = 0; y < 128; y++)
                 {
                     if (this.BlockInfo[x][y][z].getMaterial() != Material.AIR)
+                    {
+                        tempblock = new RenderBlock(this.BlockInfo[x][y][z]);
+                        tempblock.laglessRender(x, y, z, cx, cz);
+                    }
+                }
+            }
+        }
+    }
+
+    public void renderChunkLagTest(int cx, int cz)
+    {
+        RenderBlock tempblock;
+        TextureLoader textureLoader = new TextureLoader();
+
+        try {
+            textureLoader.getTexture("assets/textures/blocks/stone.png").bind();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (int x = 0; x < 16; x++)
+        {
+            for (int z = 0; z < 16; z++)
+            {
+                for (int y = 0; y < 128; y++)
+                {
+                    if (this.BlockInfo[x][y][z].getMaterial() == Material.STONE)
+                    {
+                        tempblock = new RenderBlock(this.BlockInfo[x][y][z]);
+                        tempblock.laglessRender(x, y, z, cx, cz);
+                    }
+                }
+            }
+        }
+
+        try {
+            textureLoader.getTexture("assets/textures/blocks/dirt.png").bind();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (int x = 0; x < 16; x++)
+        {
+            for (int z = 0; z < 16; z++)
+            {
+                for (int y = 0; y < 128; y++)
+                {
+                    if (this.BlockInfo[x][y][z].getMaterial() == Material.DIRT)
+                    {
+                        tempblock = new RenderBlock(this.BlockInfo[x][y][z]);
+                        tempblock.laglessRender(x, y, z, cx, cz);
+                    }
+                }
+            }
+        }
+
+        try {
+            textureLoader.getTexture("assets/textures/blocks/grass.png").bind();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (int x = 0; x < 16; x++)
+        {
+            for (int z = 0; z < 16; z++)
+            {
+                for (int y = 0; y < 128; y++)
+                {
+                    if (this.BlockInfo[x][y][z].getMaterial() == Material.GRASS)
                     {
                         tempblock = new RenderBlock(this.BlockInfo[x][y][z]);
                         tempblock.laglessRender(x, y, z, cx, cz);
