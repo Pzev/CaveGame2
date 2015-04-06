@@ -53,6 +53,7 @@ public class PrepDisplay
             ticker.tick();
             RenderWorld.renderTest();
             RenderWorld.AllBlocks();
+            RenderBlock.wireFrame();
 
             AllMouse.sky(100);
 

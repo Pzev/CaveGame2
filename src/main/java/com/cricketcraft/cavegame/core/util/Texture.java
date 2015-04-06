@@ -4,7 +4,7 @@ import org.lwjgl.opengl.GL11;
 
 public class Texture {
     private int target;
-    private int textureID;
+    public int textureID;
     private int height;
     private int width;
     private int texWidth;
