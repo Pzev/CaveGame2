@@ -246,19 +246,6 @@ public class RenderBlock
         GL11.glVertex3f(x + 1, y, z);
     }
 
-    public void renderXPWire(int x, int y, int z)
-    {
-        GL11.glColor4f(0, 0, 0, 1);
-        GL11.glLineWidth(0.05f);
-        // X+ Side
-        GL11.glBegin(GL11.GL_LINE_LOOP);
-        GL11.glVertex3f(x + 1.01f, y, z + 1.01f);
-        GL11.glVertex3f(x + 1.01f, y + 1.01f, z + 1.01f);
-        GL11.glVertex3f(x + 1.01f, y + 1.01f, z);
-        GL11.glVertex3f(x + 1.01f, y, z);
-        GL11.glEnd();
-    }
-
     public void renderXN(int x, int y, int z)
     {
 
@@ -271,19 +258,6 @@ public class RenderBlock
         GL11.glVertex3f(x, y + 1, z);
         GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x, y, z);
-    }
-
-    public void renderXNWire(int x, int y, int z)
-    {
-        GL11.glColor4f(0, 0, 0, 1);
-        GL11.glLineWidth(0.05f);
-        // X- Side
-        GL11.glBegin(GL11.GL_LINE_LOOP);
-        GL11.glVertex3f(x, y, z + 1.01f);
-        GL11.glVertex3f(x, y + 1.01f, z + 1.01f);
-        GL11.glVertex3f(x, y + 1.01f, z);
-        GL11.glVertex3f(x, y, z);
-        GL11.glEnd();
     }
 
     public void renderYP(int x, int y, int z)
@@ -300,19 +274,6 @@ public class RenderBlock
         GL11.glVertex3f(x + 1, y + 1, z);
     }
 
-    public void renderYPWire(int x, int y, int z)
-    {
-        GL11.glColor4f(0, 0, 0, 1);
-        GL11.glLineWidth(0.05f);
-        // X+ Side
-        GL11.glBegin(GL11.GL_LINE_LOOP);
-        GL11.glVertex3f(x + 1.01f, y + 1.01f, z + 1.01f);
-        GL11.glVertex3f(x, y + 1.01f, z + 1.01f);
-        GL11.glVertex3f(x, y + 1.01f, z);
-        GL11.glVertex3f(x + 1.01f, y + 1.01f, z);
-        GL11.glEnd();
-    }
-
     public void renderYN(int x, int y, int z)
     {
 
@@ -325,19 +286,6 @@ public class RenderBlock
         GL11.glVertex3f(x, y, z);
         GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x + 1, y, z);
-    }
-
-    public void renderYNWire(int x, int y, int z)
-    {
-        GL11.glColor4f(0, 0, 0, 1);
-        GL11.glLineWidth(0.05f);
-        // X+ Side
-        GL11.glBegin(GL11.GL_LINE_LOOP);
-        GL11.glVertex3f(x + 1.01f, y, z + 1.01f);
-        GL11.glVertex3f(x, y, z + 1.01f);
-        GL11.glVertex3f(x, y, z);
-        GL11.glVertex3f(x + 1.01f, y, z);
-        GL11.glEnd();
     }
 
     public void renderZP(int x, int y, int z)
@@ -354,19 +302,6 @@ public class RenderBlock
         GL11.glVertex3f(x + 1, y, z + 1);
     }
 
-    public void renderZPWire(int x, int y, int z)
-    {
-        GL11.glColor4f(0, 0, 0, 1);
-        GL11.glLineWidth(0.05f);
-        // X+ Side
-        GL11.glBegin(GL11.GL_LINE_LOOP);
-        GL11.glVertex3f(x + 1.01f, y + 1.01f, z + 1.01f);
-        GL11.glVertex3f(x, y + 1.01f, z + 1.01f);
-        GL11.glVertex3f(x, y, z + 1.01f);
-        GL11.glVertex3f(x + 1.01f, y, z + 1.01f);
-        GL11.glEnd();
-    }
-
     public void renderZN(int x, int y, int z)
     {
 
@@ -379,19 +314,6 @@ public class RenderBlock
         GL11.glVertex3f(x, y, z);
         GL11.glTexCoord2f(1, 0);
         GL11.glVertex3f(x + 1, y, z);
-    }
-
-    public void renderZNWire(int x, int y, int z)
-    {
-        GL11.glColor4f(0, 0, 0, 1);
-        GL11.glLineWidth(0.05f);
-        // X+ Side
-        GL11.glBegin(GL11.GL_LINE_LOOP);
-        GL11.glVertex3f(x + 1.01f, y + 1.01f, z);
-        GL11.glVertex3f(x, y + 1.01f, z);
-        GL11.glVertex3f(x, y, z);
-        GL11.glVertex3f(x + 1.01f, y, z);
-        GL11.glEnd();
     }
 
     public void laglessRender(int x, int y, int z, int cx, int cz)
@@ -453,30 +375,38 @@ public class RenderBlock
     // Init in RenderWorld Class
     public static void wireFrame()
     {
-        double smallX = CaveGame.getWorld().thePlayer.getxCoord() - CaveGame.getWorld().thePlayer.getEyeX();
-        double smallY = CaveGame.getWorld().thePlayer.getyCoord() - CaveGame.getWorld().thePlayer.getEyeY();
-        double smallZ = CaveGame.getWorld().thePlayer.getzCoord() - CaveGame.getWorld().thePlayer.getEyeZ();
+        double newX, newY, newZ, newRad1, newRad2;
+        int cx, cz;
 
-        double xRad = Math.sqrt((smallX * smallX) + (smallZ * smallZ));
-        double theta = (float) Math.atan(smallZ / smallX);
-        double zAngle = (float) Math.asin(smallY / xRad);
+        double xDist = CaveGame.getWorld().thePlayer.getEyeX();
+        double yDist = CaveGame.getWorld().thePlayer.getEyeY();
+        double zDist = CaveGame.getWorld().thePlayer.getEyeZ();
 
-        for(float r = 1; r <= 7; r += 0.01) {
-            // ReCheck for trig accuracy: newY is Correct, newX idk, newZ idk
-            double newY = r * ((float) (Math.cos(theta * Math.PI / 180)));
-            double newX = r * ((float) (Math.sin(theta * Math.PI / 180) * Math.cos(zAngle * Math.PI / 180)));
-            double newZ = r * ((float) (Math.sin(theta * Math.PI / 180) * Math.sin(zAngle * Math.PI / 180)));
+        double angleXZ = Math.atan(xDist / zDist);
+        double radiusXZ = Math.sqrt((xDist * xDist) + (zDist * zDist));
+        double angleY = Math.atan(yDist / radiusXZ);
 
-            int cx = (int) newX / 16;
-            int cz = (int) newZ / 16;
-            System.out.println(newX);
+        System.out.println(xDist + " " + yDist + " " + zDist);
+
+        for(float r = 0; r <= 20; r += 0.01) {
+            newY = r * Math.sin(angleY);
+
+            newRad1 = Math.tan(angleY);
+            newRad2 = newY / newRad1;
+
+            newX = r * Math.sin(angleXZ);
+            newZ = r * Math.cos(angleXZ);
+
+            cx = (int) newX / 16;
+            cz = (int) newZ / 16;
+
             if(ChunkInfo[cx][cz] != null)
             {
                 System.out.println(newY);
                 if (ChunkInfo[cx][cz].BlockInfo[(int) newX][(int) newY][(int) newZ].getMaterial() != Material.AIR)
                 {
-                    renderWireFrame((int) newX, (int) newY, (int) newZ);
-                    r = 100000;
+                    renderWireFrame((int) (newX + CaveGame.getWorld().thePlayer.getxCoord()), (int) (newY + CaveGame.getWorld().thePlayer.getyCoord()), (int) (newZ + CaveGame.getWorld().thePlayer.getzCoord()));
+                    r = 1000;
                     System.out.println(newX);
                 }
             }
