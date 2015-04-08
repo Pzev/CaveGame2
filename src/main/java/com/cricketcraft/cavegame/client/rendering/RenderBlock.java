@@ -379,37 +379,40 @@ public class RenderBlock
         int cx, cz;
 
         double xDist = CaveGame.getWorld().thePlayer.getEyeX();
-        double yDist = CaveGame.getWorld().thePlayer.getEyeY();
+        double yDist = (CaveGame.getWorld().thePlayer.getEyeY());
         double zDist = CaveGame.getWorld().thePlayer.getEyeZ();
 
         double angleXZ = Math.atan(xDist / zDist);
         double radiusXZ = Math.sqrt((xDist * xDist) + (zDist * zDist));
         double angleY = Math.atan(yDist / radiusXZ);
 
-        System.out.println(xDist + " " + yDist + " " + zDist);
-
-        for(float r = 0; r <= 20; r += 0.01) {
-            newY = r * Math.sin(angleY);
+        for(double r = 0; r <= 10; r += 0.1) {
+            newY = (r * Math.sin(angleY)) + CaveGame.getWorld().thePlayer.getyCoord();
 
             newRad1 = Math.tan(angleY);
             newRad2 = newY / newRad1;
 
-            newX = r * Math.sin(angleXZ);
-            newZ = r * Math.cos(angleXZ);
+            newX = (r * Math.sin(angleXZ)) + CaveGame.getWorld().thePlayer.getxCoord();
+            newZ = (r * Math.cos(angleXZ)) + CaveGame.getWorld().thePlayer.getzCoord();
 
-            cx = (int) newX / 16;
-            cz = (int) newZ / 16;
+            cx = (int) CaveGame.getWorld().thePlayer.getxCoord() / 16;
+            cz = (int) CaveGame.getWorld().thePlayer.getzCoord() / 16;
 
-            if(ChunkInfo[cx][cz] != null)
-            {
-                System.out.println(newY);
-                if (ChunkInfo[cx][cz].BlockInfo[(int) newX][(int) newY][(int) newZ].getMaterial() != Material.AIR)
-                {
-                    renderWireFrame((int) (newX + CaveGame.getWorld().thePlayer.getxCoord()), (int) (newY + CaveGame.getWorld().thePlayer.getyCoord()), (int) (newZ + CaveGame.getWorld().thePlayer.getzCoord()));
+            while(newX >= 16)
+                newX -= 16;
+            while(newY >= 16)
+                newY -= 16;
+            while(newZ >= 16)
+                newZ -= 16;
+
+            try {
+                if (ChunkInfo[cx][cz].BlockInfo[(int) newX][(int) newY][(int) newZ].getMaterial() != Material.AIR) {
+                    renderWireFrame((int) newX, (int) newY, (int) newZ);
                     r = 1000;
-                    System.out.println(newX);
                 }
             }
+            catch (ArrayIndexOutOfBoundsException e){}
+
         }
     }
 
