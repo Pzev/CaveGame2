@@ -379,7 +379,7 @@ public class RenderBlock
         int cx, cz;
 
         double xDist = CaveGame.getWorld().thePlayer.getEyeX();
-        double yDist = (CaveGame.getWorld().thePlayer.getEyeY());
+        double yDist = CaveGame.getWorld().thePlayer.getEyeY();
         double zDist = CaveGame.getWorld().thePlayer.getEyeZ();
 
         double angleXZ = Math.atan(xDist / zDist);
@@ -387,16 +387,15 @@ public class RenderBlock
         double angleY = Math.atan(yDist / radiusXZ);
 
         for(double r = 0; r <= 10; r += 0.1) {
-            newY = (r * Math.sin(angleY)) + CaveGame.getWorld().thePlayer.getyCoord();
+            newRad1 = r * Math.cos(angleY);
 
-            newRad1 = Math.tan(angleY);
-            newRad2 = newY / newRad1;
+            newY = (r * Math.sin(angleY)) + CaveGame.getWorld().thePlayer.getyCoord() + 1.8;
 
-            newX = (r * Math.sin(angleXZ)) + CaveGame.getWorld().thePlayer.getxCoord();
-            newZ = (r * Math.cos(angleXZ)) + CaveGame.getWorld().thePlayer.getzCoord();
+            newX = (newRad1 * Math.sin(angleXZ)) + CaveGame.getWorld().thePlayer.getxCoord();
+            newZ = (newRad1 * Math.cos(angleXZ)) + CaveGame.getWorld().thePlayer.getzCoord();
 
-            cx = (int) CaveGame.getWorld().thePlayer.getxCoord() / 16;
-            cz = (int) CaveGame.getWorld().thePlayer.getzCoord() / 16;
+            cx = (int) (CaveGame.getWorld().thePlayer.getxCoord() / 16);
+            cz = (int) (CaveGame.getWorld().thePlayer.getzCoord() / 16);
 
             while(newX >= 16)
                 newX -= 16;
@@ -409,6 +408,7 @@ public class RenderBlock
                 if (ChunkInfo[cx][cz].BlockInfo[(int) newX][(int) newY][(int) newZ].getMaterial() != Material.AIR) {
                     renderWireFrame((int) newX, (int) newY, (int) newZ);
                     r = 1000;
+                    System.out.println(cx);
                 }
             }
             catch (ArrayIndexOutOfBoundsException e){}
