@@ -4,6 +4,7 @@ package com.cricketcraft.cavegame.client.rendering;
 import com.cricketcraft.cavegame.CaveGame;
 import com.cricketcraft.cavegame.core.block.Block;
 import com.cricketcraft.cavegame.core.block.Material;
+import com.cricketcraft.cavegame.core.block.SelectedBlock;
 import com.cricketcraft.cavegame.core.util.TextureLoader;
 import org.lwjgl.opengl.GL11;
 
@@ -375,8 +376,8 @@ public class RenderBlock
     // Init in RenderWorld Class
     public static void wireFrame()
     {
-        double newX, newY, newZ, newRad1, newRad2;
-        int cx, cz;
+        double newX, newY, newZ, newRad1;
+        int cx, cz, wireX, wireY, wireZ;
 
         double xDist = CaveGame.getWorld().thePlayer.getEyeX();
         double yDist = CaveGame.getWorld().thePlayer.getEyeY();
@@ -386,16 +387,24 @@ public class RenderBlock
         double radiusXZ = Math.sqrt((xDist * xDist) + (zDist * zDist));
         double angleY = Math.atan(yDist / radiusXZ);
 
+        int q = 0;
+        if(zDist < 0) q = -1;
+        if(zDist >= 0) q = 1;
+
         for(double r = 0; r <= 10; r += 0.1) {
-            newRad1 = r * Math.cos(angleY);
+            newRad1 = q * r * Math.cos(angleY);
 
             newY = (r * Math.sin(angleY)) + CaveGame.getWorld().thePlayer.getyCoord() + 1.8;
 
             newX = (newRad1 * Math.sin(angleXZ)) + CaveGame.getWorld().thePlayer.getxCoord();
             newZ = (newRad1 * Math.cos(angleXZ)) + CaveGame.getWorld().thePlayer.getzCoord();
 
-            cx = (int) (CaveGame.getWorld().thePlayer.getxCoord() / 16);
-            cz = (int) (CaveGame.getWorld().thePlayer.getzCoord() / 16);
+            cx = (int) (CaveGame.getWorld().thePlayer.getxCoord() / 16f);
+            cz = (int) (CaveGame.getWorld().thePlayer.getzCoord() / 16f);
+
+            wireX = (int) newX;
+            wireY = (int) newY;
+            wireZ = (int) newZ;
 
             while(newX >= 16)
                 newX -= 16;
@@ -406,9 +415,37 @@ public class RenderBlock
 
             try {
                 if (ChunkInfo[cx][cz].BlockInfo[(int) newX][(int) newY][(int) newZ].getMaterial() != Material.AIR) {
-                    renderWireFrame((int) newX, (int) newY, (int) newZ);
+                    renderWireFrame(wireX, wireY, wireZ);
+
+                    SelectedBlock.xPos = wireX;
+                    SelectedBlock.zPos = wireY;
+                    SelectedBlock.xPos = wireZ;
+
+                    r += 0.2;
+
+                    newRad1 = q * r * Math.cos(angleY);
+
+                    newY = (r * Math.sin(angleY)) + CaveGame.getWorld().thePlayer.getyCoord() + 1.8;
+
+                    newX = (newRad1 * Math.sin(angleXZ)) + CaveGame.getWorld().thePlayer.getxCoord();
+                    newZ = (newRad1 * Math.cos(angleXZ)) + CaveGame.getWorld().thePlayer.getzCoord();
+
+                    wireX = (int) newX;
+                    wireY = (int) newY;
+                    wireZ = (int) newZ;
+
+                    while(newX >= 16)
+                        newX -= 16;
+                    while(newY >= 16)
+                        newY -= 16;
+                    while(newZ >= 16)
+                        newZ -= 16;
+
+                    SelectedBlock.lookX = wireX;
+                    SelectedBlock.lookY = wireY;
+                    SelectedBlock.lookZ = wireZ;
+
                     r = 1000;
-                    System.out.println(cx);
                 }
             }
             catch (ArrayIndexOutOfBoundsException e){}
