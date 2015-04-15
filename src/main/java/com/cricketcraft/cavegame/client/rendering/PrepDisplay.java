@@ -59,8 +59,7 @@ public class PrepDisplay
 
             AllMouse.move();
             AllMouse.look();
-
-
+            AllMouse.placeBlocks();
 
             Display.update();
         }

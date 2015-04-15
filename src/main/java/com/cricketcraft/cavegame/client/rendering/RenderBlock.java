@@ -417,9 +417,12 @@ public class RenderBlock
                 if (ChunkInfo[cx][cz].BlockInfo[(int) newX][(int) newY][(int) newZ].getMaterial() != Material.AIR) {
                     renderWireFrame(wireX, wireY, wireZ);
 
-                    SelectedBlock.xPos = wireX;
-                    SelectedBlock.zPos = wireY;
-                    SelectedBlock.xPos = wireZ;
+                    SelectedBlock.lookBlock = ChunkInfo[cx][cz].BlockInfo[(int) newX][(int) newY][(int) newZ].getMaterial();
+                    SelectedBlock.xPos = (int) newX;
+                    SelectedBlock.yPos = (int) newY;
+                    SelectedBlock.zPos = (int) newZ;
+                    SelectedBlock.cx = cx;
+                    SelectedBlock.cz = cz;
 
                     r += 0.2;
 
@@ -434,6 +437,12 @@ public class RenderBlock
                     wireY = (int) newY;
                     wireZ = (int) newZ;
 
+                    SelectedBlock.lookX = wireX;
+                    SelectedBlock.lookY = wireY;
+                    SelectedBlock.lookZ = wireZ;
+                    SelectedBlock.lookcx = cx;
+                    SelectedBlock.lookcz = cz;
+
                     while(newX >= 16)
                         newX -= 16;
                     while(newY >= 16)
@@ -441,9 +450,7 @@ public class RenderBlock
                     while(newZ >= 16)
                         newZ -= 16;
 
-                    SelectedBlock.lookX = wireX;
-                    SelectedBlock.lookY = wireY;
-                    SelectedBlock.lookZ = wireZ;
+                    SelectedBlock.heldBlock = ChunkInfo[cx][cz].BlockInfo[(int) newX][(int) newY][(int) newZ].getMaterial();
 
                     r = 1000;
                 }

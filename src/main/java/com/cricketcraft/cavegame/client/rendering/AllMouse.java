@@ -1,10 +1,12 @@
 package com.cricketcraft.cavegame.client.rendering;
 
 import com.cricketcraft.cavegame.CaveGame;
+import com.cricketcraft.cavegame.core.util.MouseUtil;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
+import com.cricketcraft.cavegame.core.block.SelectedBlock;
 
 public class AllMouse
 {
@@ -174,5 +176,14 @@ public class AllMouse
         GL11.glVertex3f(thexp, theyn, thezp);
 
         GL11.glEnd();
+    }
+
+    public static void placeBlocks()
+    {
+        MouseUtil mouse = new MouseUtil();
+        if(mouse.isClicked(0))
+        {
+            SelectedBlock.deleteLookBlock();
+        }
     }
 }
