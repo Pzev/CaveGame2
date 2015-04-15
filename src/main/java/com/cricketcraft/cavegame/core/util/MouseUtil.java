@@ -4,16 +4,32 @@ import org.lwjgl.input.Mouse;
 
 public class MouseUtil
 {
-    static boolean q = true;
-    public boolean isClicked(int button)
+    private static boolean prevState;
+
+    public static boolean isClicked(int button)
     {
-        if(Mouse.isButtonDown(button) && q == true)
+        if(Mouse.isButtonDown(button) && !prevState)
         {
-            q = false;
+            prevState = Mouse.isButtonDown(button);
             return true;
         }
         else
         {
+            prevState = Mouse.isButtonDown(button);
+            return false;
+        }
+    }
+
+    public static boolean isReleased(int button)
+    {
+        if(Mouse.isButtonDown(button) && prevState)
+        {
+            prevState = Mouse.isButtonDown(button);
+            return true;
+        }
+        else
+        {
+            prevState = Mouse.isButtonDown(button);
             return false;
         }
     }

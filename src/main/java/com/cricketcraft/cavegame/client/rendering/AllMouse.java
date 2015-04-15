@@ -8,6 +8,8 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
 import com.cricketcraft.cavegame.core.block.SelectedBlock;
 
+import static com.cricketcraft.cavegame.core.util.constants.BlockInformation.*;
+
 public class AllMouse
 {
     static double tempx1 = PrepDisplay.displayWidth/2, tempy1 = PrepDisplay.displayHeight/2;
@@ -180,10 +182,16 @@ public class AllMouse
 
     public static void placeBlocks()
     {
-        MouseUtil mouse = new MouseUtil();
-        if(mouse.isClicked(0))
+        //Deletes blocks left clicked
+        if(MouseUtil.isClicked(0))
         {
             SelectedBlock.deleteLookBlock();
+        }
+
+        //Places blocks when right clicked (currently just places stone)
+        if(MouseUtil.isClicked(1))
+        {
+            SelectedBlock.placeStone();
         }
     }
 }

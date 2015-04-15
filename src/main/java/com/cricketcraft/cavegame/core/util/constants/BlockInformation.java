@@ -1,5 +1,6 @@
 package com.cricketcraft.cavegame.core.util.constants;
 
+import com.cricketcraft.cavegame.core.util.MouseUtil;
 import com.cricketcraft.cavegame.core.world.Chunk;
 
 public class BlockInformation

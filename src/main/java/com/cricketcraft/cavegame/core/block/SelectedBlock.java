@@ -17,12 +17,31 @@ public class SelectedBlock
     public static int lookZ = 0;
 
     public static Material lookBlock;
-    public static Material heldBlock;
 
     public static void deleteLookBlock()
     {
         Block blockTemp = new Block(Material.AIR);
         ChunkInfo[cx][cz].BlockInfo[xPos][yPos][zPos] = blockTemp;
+    }
+
+    public static void placeStone()
+    {
+        Block blockTemp = new Block(Material.STONE);
+        ChunkInfo[lookcx][lookcz].BlockInfo[lookX][lookY][lookZ] = blockTemp;
+    }
+
+    public static void resetValues()
+    {
+        cx = 0;
+        cz = 0;
+        xPos = 0;
+        yPos = 0;
+        zPos = 0;
+        lookcx = 0;
+        lookcz = 0;
+        lookX = 0;
+        lookY = 0;
+        lookZ = 0;
     }
 
 }

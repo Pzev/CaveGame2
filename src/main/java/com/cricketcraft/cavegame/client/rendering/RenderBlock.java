@@ -391,6 +391,8 @@ public class RenderBlock
         if(zDist < 0) q = -1;
         if(zDist >= 0) q = 1;
 
+        SelectedBlock.resetValues();
+
         for(double r = 0; r <= 10; r += 0.1) {
             newRad1 = q * r * Math.cos(angleY);
 
@@ -399,12 +401,8 @@ public class RenderBlock
             newX = (newRad1 * Math.sin(angleXZ)) + CaveGame.getWorld().thePlayer.getxCoord();
             newZ = (newRad1 * Math.cos(angleXZ)) + CaveGame.getWorld().thePlayer.getzCoord();
 
-            cx = (int) (CaveGame.getWorld().thePlayer.getxCoord() / 16f);
-            cz = (int) (CaveGame.getWorld().thePlayer.getzCoord() / 16f);
-
-            wireX = (int) newX;
-            wireY = (int) newY;
-            wireZ = (int) newZ;
+            cx = (int) (newX / 16f);
+            cz = (int) (newZ / 16f);
 
             while(newX >= 16)
                 newX -= 16;
@@ -415,16 +413,20 @@ public class RenderBlock
 
             try {
                 if (ChunkInfo[cx][cz].BlockInfo[(int) newX][(int) newY][(int) newZ].getMaterial() != Material.AIR) {
+
+                    wireX = (int) newX;
+                    wireY = (int) newY;
+                    wireZ = (int) newZ;
+
                     renderWireFrame(wireX, wireY, wireZ);
 
-                    SelectedBlock.lookBlock = ChunkInfo[cx][cz].BlockInfo[(int) newX][(int) newY][(int) newZ].getMaterial();
                     SelectedBlock.xPos = (int) newX;
                     SelectedBlock.yPos = (int) newY;
                     SelectedBlock.zPos = (int) newZ;
                     SelectedBlock.cx = cx;
                     SelectedBlock.cz = cz;
 
-                    r += 0.2;
+                    r -= 0.2;
 
                     newRad1 = q * r * Math.cos(angleY);
 
@@ -433,24 +435,19 @@ public class RenderBlock
                     newX = (newRad1 * Math.sin(angleXZ)) + CaveGame.getWorld().thePlayer.getxCoord();
                     newZ = (newRad1 * Math.cos(angleXZ)) + CaveGame.getWorld().thePlayer.getzCoord();
 
-                    wireX = (int) newX;
-                    wireY = (int) newY;
-                    wireZ = (int) newZ;
-
-                    SelectedBlock.lookX = wireX;
-                    SelectedBlock.lookY = wireY;
-                    SelectedBlock.lookZ = wireZ;
-                    SelectedBlock.lookcx = cx;
-                    SelectedBlock.lookcz = cz;
+                    cx = (int) (newX / 16f);
+                    cz = (int) (newZ / 16f);
 
                     while(newX >= 16)
                         newX -= 16;
-                    while(newY >= 16)
-                        newY -= 16;
                     while(newZ >= 16)
                         newZ -= 16;
 
-                    SelectedBlock.heldBlock = ChunkInfo[cx][cz].BlockInfo[(int) newX][(int) newY][(int) newZ].getMaterial();
+                    SelectedBlock.lookX = (int) newX;
+                    SelectedBlock.lookY = (int) newY;
+                    SelectedBlock.lookZ = (int) newZ;
+                    SelectedBlock.lookcx = cx;
+                    SelectedBlock.lookcz = cz;
 
                     r = 1000;
                 }
