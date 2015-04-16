@@ -404,6 +404,10 @@ public class RenderBlock
             cx = (int) (newX / 16f);
             cz = (int) (newZ / 16f);
 
+            wireX = (int) newX;
+            wireY = (int) newY;
+            wireZ = (int) newZ;
+
             while(newX >= 16)
                 newX -= 16;
             while(newY >= 16)
@@ -413,10 +417,6 @@ public class RenderBlock
 
             try {
                 if (ChunkInfo[cx][cz].BlockInfo[(int) newX][(int) newY][(int) newZ].getMaterial() != Material.AIR) {
-
-                    wireX = (int) newX;
-                    wireY = (int) newY;
-                    wireZ = (int) newZ;
 
                     renderWireFrame(wireX, wireY, wireZ);
 

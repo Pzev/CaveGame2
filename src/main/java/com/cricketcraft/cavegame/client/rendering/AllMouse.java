@@ -183,13 +183,13 @@ public class AllMouse
     public static void placeBlocks()
     {
         //Deletes blocks left clicked
-        if(MouseUtil.isClicked(0))
+        if(MouseUtil.INSTANCE.isClicked(0))
         {
             SelectedBlock.deleteLookBlock();
         }
 
         //Places blocks when right clicked (currently just places stone)
-        if(MouseUtil.isClicked(1))
+        if(MouseUtil.INSTANCE.isClicked(1))
         {
             SelectedBlock.placeStone();
         }

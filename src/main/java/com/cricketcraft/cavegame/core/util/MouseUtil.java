@@ -2,34 +2,38 @@ package com.cricketcraft.cavegame.core.util;
 
 import org.lwjgl.input.Mouse;
 
+import java.awt.event.InputEvent;
+
 public class MouseUtil
 {
-    private static boolean prevState;
+    public static final MouseUtil INSTANCE = new MouseUtil();
+    private boolean prevState = true;
 
-    public static boolean isClicked(int button)
+    public boolean isClicked(int button)
     {
+        //if(InputEvent.MOUSE_EVENT_MASK == MOUSE_)
         if(Mouse.isButtonDown(button) && !prevState)
         {
-            prevState = Mouse.isButtonDown(button);
+            prevState = true;
             return true;
         }
         else
         {
-            prevState = Mouse.isButtonDown(button);
+            prevState = false;
             return false;
         }
     }
 
-    public static boolean isReleased(int button)
+    public boolean isReleased(int button)
     {
         if(Mouse.isButtonDown(button) && prevState)
         {
-            prevState = Mouse.isButtonDown(button);
+            prevState = false;
             return true;
         }
         else
         {
-            prevState = Mouse.isButtonDown(button);
+            prevState = true;
             return false;
         }
     }
