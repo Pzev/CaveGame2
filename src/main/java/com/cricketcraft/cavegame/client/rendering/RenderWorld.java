@@ -63,7 +63,7 @@ public class RenderWorld {
                                         {
                                             chunk.addBlock(x, y, z, Blocks.grass);
                                         }
-                                        else if (chunk.BlockInfo[x][y][z] == null)
+                                        else if ( chunk.BlockInfo[x][y][z] == null )
                                         {
                                             chunk.addBlock(x, y, z, Blocks.air);
                                         }
@@ -114,12 +114,13 @@ public class RenderWorld {
     public static void renderTest()
     {
         GL11.glEnable(GL11.GL_TEXTURE_2D);
+        RenderBlock blockNul = new RenderBlock(Blocks.nul);
         RenderBlock blockAir = new RenderBlock(Blocks.air);
         RenderBlock blockStone = new RenderBlock(Blocks.stone);
         RenderBlock blockDirt = new RenderBlock(Blocks.dirt);
         RenderBlock blockGrass = new RenderBlock(Blocks.grass);
 
-        blockAir.renderBase(5, 8, -3);
+        blockNul.renderBase(5, 8, -3);
         blockStone.renderBase(5, 8, -1);
         blockDirt.renderBase(5, 8, 1);
         blockGrass.renderBase(5, 8, 3);

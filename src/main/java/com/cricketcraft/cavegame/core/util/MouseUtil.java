@@ -1,8 +1,7 @@
 package com.cricketcraft.cavegame.core.util;
 
+import com.cricketcraft.cavegame.core.block.SelectedBlock;
 import org.lwjgl.input.Mouse;
-
-import java.awt.event.InputEvent;
 
 public class MouseUtil
 {
@@ -11,7 +10,6 @@ public class MouseUtil
 
     public boolean isClicked(int button)
     {
-        //if(InputEvent.MOUSE_EVENT_MASK == MOUSE_)
         if(Mouse.isButtonDown(button) && !prevState)
         {
             prevState = true;
@@ -37,4 +35,5 @@ public class MouseUtil
             return false;
         }
     }
+
 }

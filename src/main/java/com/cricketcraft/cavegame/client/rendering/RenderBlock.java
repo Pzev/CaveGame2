@@ -342,9 +342,9 @@ public class RenderBlock
                 renderXN(blockX, y, blockZ);
 
         // Y+ Side
-        if(y < 128 && ChunkInfo[cx][cz].BlockInfo[x][y + 1][z].getMaterial() == Material.AIR)
+        if(y < 127 && ChunkInfo[cx][cz].BlockInfo[x][y + 1][z].getMaterial() == Material.AIR)
             renderYP(blockX, y, blockZ);
-        else if(y == 128)
+        else if(y == 127)
             renderYP(blockX, y, blockZ);
 
         // Y- Side
