@@ -2,6 +2,7 @@ package com.cricketcraft.cavegame.client.rendering;
 
 import com.cricketcraft.cavegame.CaveGame;
 import com.cricketcraft.cavegame.core.tick.GameTick;
+import com.cricketcraft.cavegame.core.util.MouseUtil;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
@@ -38,11 +39,11 @@ public class PrepDisplay
         GL11.glMatrixMode(GL11.GL_MODELVIEW);
         GL11.glLoadIdentity();
         GLU.gluLookAt(CaveGame.getWorld().thePlayer.getxCoord(), CaveGame.getWorld().thePlayer.getyCoord() + 1.8f, CaveGame.getWorld().thePlayer.getzCoord(), CaveGame.getWorld().thePlayer.getxCoord() + CaveGame.getWorld().thePlayer.getEyeX(), CaveGame.getWorld().thePlayer.getyCoord() + 1.8f + CaveGame.getWorld().thePlayer.getEyeY(), CaveGame.getWorld().thePlayer.getzCoord() + CaveGame.getWorld().thePlayer.getEyeZ(), 0, 1, 0);
-
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
         AllMouse.sky(100);
         Display.update();
 
+        MouseUtil.INSTANCE.initListener();
         CaveGame.getWorld().thePlayer.prepChunkData();
         RenderWorld.PrepBlocks();
         GameTick ticker = new GameTick();
