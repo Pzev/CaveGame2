@@ -184,7 +184,14 @@ public class AllMouse
 
     public static void placeBlocks()
     {
-
+        if(MouseUtil.INSTANCE.isClicked(0))
+        {
+            SelectedBlock.deleteLookBlock();
+        }
+        if(MouseUtil.INSTANCE.isClicked(1))
+        {
+            SelectedBlock.placeStone();
+        }
 
     }
 }

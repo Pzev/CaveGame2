@@ -3,50 +3,37 @@ package com.cricketcraft.cavegame.core.util;
 import com.cricketcraft.cavegame.core.block.SelectedBlock;
 import org.lwjgl.input.Mouse;
 
-import java.applet.Applet;
-import java.awt.event.InputEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
-public class MouseUtil extends Applet implements MouseListener
+public class MouseUtil
 {
     public static final MouseUtil INSTANCE = new MouseUtil();
+    private boolean prevState = true;
 
-    public void initListener()
+    public boolean isClicked(int button)
     {
-        addMouseListener(this);
-    }
-    @Override
-    public void mouseClicked(MouseEvent e)
-    {
-        if(Mouse.isButtonDown(0))
+        if(Mouse.isButtonDown(button) && !prevState)
         {
-            SelectedBlock.deleteLookBlock();
+            prevState = true;
+            return true;
         }
-        if(Mouse.isButtonDown(0))
+        else
         {
-            SelectedBlock.placeStone();
+            prevState = false;
+            return false;
         }
     }
 
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
+    public boolean isReleased(int button)
+    {
+        if(Mouse.isButtonDown(button) && prevState)
+        {
+            prevState = false;
+            return true;
+        }
+        else
+        {
+            prevState = true;
+            return false;
+        }
     }
 
 }
