@@ -2,6 +2,7 @@ package com.cricketcraft.cavegame.client.rendering;
 
 import com.cricketcraft.cavegame.CaveGame;
 import com.cricketcraft.cavegame.core.tick.GameTick;
+import com.cricketcraft.cavegame.core.util.MouseUtil;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
@@ -50,6 +51,7 @@ public class PrepDisplay
         while (!Display.isCloseRequested()) {
             GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 
+            MouseUtil.isClicked();
             ticker.tick();
             RenderWorld.renderTest();
             RenderWorld.AllBlocks();
@@ -59,7 +61,6 @@ public class PrepDisplay
 
             AllMouse.move();
             AllMouse.look();
-            AllMouse.placeBlocks();
 
             Display.update();
         }

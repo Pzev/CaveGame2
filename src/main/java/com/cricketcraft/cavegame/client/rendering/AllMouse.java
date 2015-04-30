@@ -48,7 +48,7 @@ public class AllMouse
     static long temp3=0;
     static int moveLength = 0;
     static int space = 0;
-    static int escDown = 0, space2 = 0;
+    static int escDown = 0, space2 = 0, rDown = 0;
 
     public static void move() {
 
@@ -123,6 +123,15 @@ public class AllMouse
             escDown = 0;
         }
 
+        if (Keyboard.isKeyDown(Keyboard.KEY_R) && rDown == 0)
+        {
+            rDown = 1;
+            SelectedBlock.shuffleHandBlock();
+        }
+        if (Keyboard.isKeyDown(Keyboard.KEY_R) == false) {
+            rDown = 0;
+        }
+
 
         temp3 = System.nanoTime()/10000000;
     }
@@ -182,16 +191,4 @@ public class AllMouse
         GL11.glEnd();
     }
 
-    public static void placeBlocks()
-    {
-        if(MouseUtil.INSTANCE.isClicked(0))
-        {
-            SelectedBlock.deleteLookBlock();
-        }
-        if(MouseUtil.INSTANCE.isClicked(1))
-        {
-            SelectedBlock.placeStone();
-        }
-
-    }
 }

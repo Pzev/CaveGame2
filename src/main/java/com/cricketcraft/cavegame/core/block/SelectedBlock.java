@@ -1,5 +1,7 @@
 package com.cricketcraft.cavegame.core.block;
 
+import java.util.Random;
+
 import static com.cricketcraft.cavegame.core.util.constants.BlockInformation.*;
 
 public class SelectedBlock
@@ -17,6 +19,22 @@ public class SelectedBlock
     public static int lookZ = 0;
 
     public static Material lookBlock;
+    public static Block handBlock = new Block(Material.STONE);
+
+    public static void shuffleHandBlock()
+    {
+        Random ran = new Random();
+        int blah = ran.nextInt(3);
+
+        if(blah == 0)
+            handBlock = new Block(Material.AIR);
+        else if(blah == 1)
+            handBlock = new Block(Material.STONE);
+        else if(blah == 2)
+            handBlock = new Block(Material.DIRT);
+        else if(blah == 3)
+            handBlock = new Block(Material.GRASS);
+    }
 
     public static void deleteLookBlock()
     {

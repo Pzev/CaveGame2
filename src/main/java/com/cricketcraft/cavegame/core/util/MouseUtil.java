@@ -6,23 +6,28 @@ import org.lwjgl.input.Mouse;
 public class MouseUtil
 {
     public static final MouseUtil INSTANCE = new MouseUtil();
-    private boolean prevState = true;
+    private static boolean prevState = true;
 
-    public boolean isClicked(int button)
+    public static void isClicked()
     {
-        if(Mouse.isButtonDown(button) && !prevState)
-        {
-            prevState = true;
-            return true;
-        }
-        else
-        {
-            prevState = false;
-            return false;
+        while(Mouse.next()) {
+            System.out.println(Mouse.getEventButton());
+            System.out.println(Mouse.getEventButtonState());
+            if (Mouse.getEventButtonState())
+            {
+                if(Mouse.getEventButton() == 0)
+                {
+                    SelectedBlock.deleteLookBlock();
+                }
+                else if(Mouse.getEventButton() == 1)
+                {
+                    SelectedBlock.placeStone();
+                }
+            }
         }
     }
 
-    public boolean isReleased(int button)
+    public static boolean isReleased(int button)
     {
         if(Mouse.isButtonDown(button) && prevState)
         {
