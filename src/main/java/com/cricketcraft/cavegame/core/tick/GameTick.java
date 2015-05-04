@@ -6,11 +6,12 @@ public class GameTick
 {
     public static long startTime = System.currentTimeMillis();
     public static long endTime;
-
+    public static long tickCount = 0;
+    public static long tickMult = 0;
 
     protected static long milliTick = 0;
 
-   // protected static long millisecond50Tick = 0;
+    protected static long millisecond50Tick = 0;
     protected static long millisecond200Tick = 0;
     //protected static float second1Tick = 0;
     //protected static float second3Tick = 0;
@@ -24,7 +25,7 @@ public class GameTick
         milliTick = endTime - startTime;
         startTime = System.currentTimeMillis();
 
-        //millisecond50Tick += milliTick;
+        millisecond50Tick += milliTick;
         millisecond200Tick += milliTick;
         //second1Tick += (milliTick / 1000f);
         //second3Tick += (milliTick / 1000f);
@@ -32,13 +33,14 @@ public class GameTick
         //second30Tick += (milliTick / 1000f);
         //minute1Tick += (milliTick / 60000f);
 
-        /*
+
         while(millisecond50Tick >= 50)
         {
             millisecond50Tick -= 50;
             Milliseconds50();
+            RunGameTick.RunGameTick();
         }
-        **/
+
 
         while(millisecond200Tick >= 200)
         {
@@ -82,7 +84,12 @@ public class GameTick
 
     private static void Milliseconds50()
     {
-
+        tickCount++;
+        if(tickCount > Long.MAX_VALUE-100)
+        {
+            tickCount -= (Long.MAX_VALUE-100);
+            tickMult += 1;
+        }
     }
 
     private static void Milliseconds200()

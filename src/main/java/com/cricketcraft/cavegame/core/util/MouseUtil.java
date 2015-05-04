@@ -11,8 +11,6 @@ public class MouseUtil
     public static void isClicked()
     {
         while(Mouse.next()) {
-            System.out.println(Mouse.getEventButton());
-            System.out.println(Mouse.getEventButtonState());
             if (Mouse.getEventButtonState())
             {
                 if(Mouse.getEventButton() == 0)
@@ -21,7 +19,7 @@ public class MouseUtil
                 }
                 else if(Mouse.getEventButton() == 1)
                 {
-                    SelectedBlock.placeStone();
+                    SelectedBlock.placeBlock();
                 }
             }
         }

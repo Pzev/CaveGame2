@@ -24,7 +24,7 @@ public class SelectedBlock
     public static void shuffleHandBlock()
     {
         Random ran = new Random();
-        int blah = ran.nextInt(3);
+        int blah = ran.nextInt(4);
 
         if(blah == 0)
             handBlock = new Block(Material.AIR);
@@ -42,10 +42,27 @@ public class SelectedBlock
         ChunkInfo[cx][cz].BlockInfo[xPos][yPos][zPos] = blockTemp;
     }
 
-    public static void placeStone()
+    public static void placeBlock()
     {
-        Block blockTemp = new Block(Material.STONE);
-        ChunkInfo[lookcx][lookcz].BlockInfo[lookX][lookY][lookZ] = blockTemp;
+        if(checkNegatives())
+        {
+            System.out.println(lookcx);
+            System.out.println(lookcz);
+            System.out.println(lookX);
+            System.out.println(lookY);
+            System.out.println(lookZ);
+            ChunkInfo[lookcx][lookcz].BlockInfo[lookX][lookY][lookZ] = handBlock;
+        }
+    }
+
+    public static boolean checkNegatives()
+    {
+        if(lookcx < 0 || lookcz < 0 || lookX < 0 || lookY < 0 || lookZ < 0)
+        {
+            return false;
+        }
+        else
+        return true;
     }
 
     public static void resetValues()
