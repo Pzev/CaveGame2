@@ -1,5 +1,7 @@
 package com.cricketcraft.cavegame.core.block;
 
+import com.cricketcraft.cavegame.core.init.Blocks;
+
 import java.util.Random;
 
 import static com.cricketcraft.cavegame.core.util.constants.BlockInformation.*;
@@ -17,6 +19,7 @@ public class SelectedBlock
     public static int lookX = 0;
     public static int lookY = 0;
     public static int lookZ = 0;
+    public static final String douche = "ben";
 
     public static Material lookBlock;
     public static Block handBlock = new Block(Material.STONE);
@@ -27,13 +30,13 @@ public class SelectedBlock
         int blah = ran.nextInt(4);
 
         if(blah == 0)
-            handBlock = new Block(Material.AIR);
+            handBlock = Blocks.air;
         else if(blah == 1)
-            handBlock = new Block(Material.STONE);
+            handBlock = Blocks.stone;
         else if(blah == 2)
-            handBlock = new Block(Material.DIRT);
+            handBlock = Blocks.dirt;
         else if(blah == 3)
-            handBlock = new Block(Material.GRASS);
+            handBlock = Blocks.grass;
     }
 
     public static void deleteLookBlock()
@@ -46,11 +49,6 @@ public class SelectedBlock
     {
         if(checkNegatives())
         {
-            System.out.println(lookcx);
-            System.out.println(lookcz);
-            System.out.println(lookX);
-            System.out.println(lookY);
-            System.out.println(lookZ);
             ChunkInfo[lookcx][lookcz].BlockInfo[lookX][lookY][lookZ] = handBlock;
         }
     }

@@ -1,6 +1,7 @@
 package com.cricketcraft.cavegame.client.rendering;
 
 import com.cricketcraft.cavegame.CaveGame;
+import com.cricketcraft.cavegame.core.init.Blocks;
 import com.cricketcraft.cavegame.core.util.MouseUtil;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
@@ -49,6 +50,7 @@ public class AllMouse
     static int moveLength = 0;
     static int space = 0;
     static int escDown = 0, space2 = 0, rDown = 0;
+    static int Down0 = 0, Down1 = 0, Down2 = 0, Down3 = 0, Down4 = 0, Down5 = 0;
 
     public static void move() {
 
@@ -132,6 +134,45 @@ public class AllMouse
             rDown = 0;
         }
 
+        if (Keyboard.isKeyDown(Keyboard.KEY_0) && rDown == 0) {
+            Down0 = 1;
+            SelectedBlock.handBlock = Blocks.nul;
+        }
+        if (Keyboard.isKeyDown(Keyboard.KEY_0) == false) {
+            Down0 = 0;
+        }
+
+        if (Keyboard.isKeyDown(Keyboard.KEY_1) && rDown == 0) {
+            Down1 = 1;
+            SelectedBlock.handBlock = Blocks.air;
+        }
+        if (Keyboard.isKeyDown(Keyboard.KEY_1) == false) {
+            Down1 = 0;
+        }
+
+        if (Keyboard.isKeyDown(Keyboard.KEY_2) && rDown == 0) {
+            Down2 = 1;
+            SelectedBlock.handBlock = Blocks.stone;
+        }
+        if (Keyboard.isKeyDown(Keyboard.KEY_2) == false) {
+            Down2 = 0;
+        }
+
+        if (Keyboard.isKeyDown(Keyboard.KEY_3) && rDown == 0) {
+            Down3 = 1;
+            SelectedBlock.handBlock = Blocks.dirt;
+        }
+        if (Keyboard.isKeyDown(Keyboard.KEY_3) == false) {
+            Down3 = 0;
+        }
+
+        if (Keyboard.isKeyDown(Keyboard.KEY_4) && rDown == 0) {
+            Down4 = 1;
+            SelectedBlock.handBlock = Blocks.grass;
+        }
+        if (Keyboard.isKeyDown(Keyboard.KEY_4) == false) {
+            Down4 = 0;
+        }
 
         temp3 = System.nanoTime()/10000000;
     }
