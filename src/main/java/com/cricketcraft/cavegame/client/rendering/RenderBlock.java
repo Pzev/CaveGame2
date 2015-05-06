@@ -200,36 +200,27 @@ public class RenderBlock
         GL11.glVertex3f(x + 1.01f, y + 1.01f, z + 1.01f);
         GL11.glVertex3f(x + 1.01f, y + 1.01f, z);
         GL11.glVertex3f(x + 1.01f, y, z);
-
-        // X- Side
-        GL11.glVertex3f(x, y, z + 1.01f);
-        GL11.glVertex3f(x, y + 1.01f, z + 1.01f);
-        GL11.glVertex3f(x, y + 1.01f, z);
-        GL11.glVertex3f(x, y, z);
-
-        // Y+ Side
-        GL11.glVertex3f(x + 1.01f, y + 1.01f, z + 1.01f);
-        GL11.glVertex3f(x, y + 1.01f, z + 1.01f);
-        GL11.glVertex3f(x, y + 1.01f, z);
-        GL11.glVertex3f(x + 1.01f, y + 1.01f, z);
-
-        // Y- Side
         GL11.glVertex3f(x + 1.01f, y, z + 1.01f);
         GL11.glVertex3f(x, y, z + 1.01f);
-        GL11.glVertex3f(x, y, z);
-        GL11.glVertex3f(x + 1.01f, y, z);
-
-        // Z+ Side
-        GL11.glVertex3f(x + 1.01f, y + 1.01f, z + 1.01f);
         GL11.glVertex3f(x, y + 1.01f, z + 1.01f);
-        GL11.glVertex3f(x, y, z + 1.01f);
-        GL11.glVertex3f(x + 1.01f, y, z + 1.01f);
-
-        // Z- Side
-        GL11.glVertex3f(x + 1.01f, y + 1.01f, z);
         GL11.glVertex3f(x, y + 1.01f, z);
         GL11.glVertex3f(x, y, z);
+        GL11.glVertex3f(x, y, z + 1.01f);
+        GL11.glEnd();
+
+        GL11.glBegin(GL11.GL_LINE);
+        GL11.glVertex3f(x + 1.01f, y + 1.01f, z + 1.01f);
+        GL11.glVertex3f(x, y + 1.01f, z + 1.01f);
+        GL11.glEnd();
+
+        GL11.glBegin(GL11.GL_LINE);
+        GL11.glVertex3f(x + 1.01f, y + 1.01f, z);
+        GL11.glVertex3f(x, y + 1.01f, z);
+        GL11.glEnd();
+
+        GL11.glBegin(GL11.GL_LINE);
         GL11.glVertex3f(x + 1.01f, y, z);
+        GL11.glVertex3f(x, y, z);
         GL11.glEnd();
     }
 

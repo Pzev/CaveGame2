@@ -65,13 +65,7 @@ public class PrepDisplay
 
             Views.make2D();
 
-            GL11.glColor3f(.5f, .5f, .5f);
-            GL11.glBegin(GL11.GL_QUADS);
-            GL11.glVertex2f(10, 10);
-            GL11.glVertex2f(10, 100);
-            GL11.glVertex2f(100, 100);
-            GL11.glVertex2f(100, 10);
-            GL11.glEnd();
+            RenderHUD.renderHUD();
 
             Views.make3D();
 
