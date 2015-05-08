@@ -13,12 +13,15 @@ public class Views
         glPushAttrib(GL_ENABLE_BIT);
 
         glViewport(0, 0, PrepDisplay.displayWidth, PrepDisplay.displayHeight);
+
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
         glOrtho(0, PrepDisplay.displayWidth, PrepDisplay.displayHeight, 0, -1, 1);
 
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
+        glEnable(GL11.GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     }
 
     public static void make3D()
@@ -30,6 +33,11 @@ public class Views
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
         GLU.gluPerspective(70, (float) (PrepDisplay.displayWidth / PrepDisplay.displayHeight) * 1.7f, .1f, 10000);
+
+        glMatrixMode(GL_MODELVIEW);
+        glLoadIdentity();
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
