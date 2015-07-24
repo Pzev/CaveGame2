@@ -16,7 +16,7 @@ import static com.cricketcraft.cavegame.core.util.constants.BlockInformation.*;
 public class AllMouse
 {
     static double tempx1 = PrepDisplay.displayWidth/2, tempy1 = PrepDisplay.displayHeight/2;
-    static float yAngle = 90, zAngle = 0;
+    static float yAngle = 90, zAngle = 0f;
 
     public static void look() {
         if(Mouse.isGrabbed()) {
@@ -24,13 +24,14 @@ public class AllMouse
             double tempx = (Mouse.getX());
             double tempy = (Mouse.getY());
 
-            zAngle -= 0.2f * (tempx1-tempx);
-            yAngle += 0.2f * (tempy1-tempy);
+            zAngle -= 0.2f * (tempx1 - tempx);
+            yAngle += 0.2f * (tempy1 - tempy);
 
             if(yAngle < 0.1) yAngle = 0.1f;
             if(yAngle > 179.9) yAngle = 179.9f;
 
-            Mouse.setCursorPosition(PrepDisplay.displayWidth/2, PrepDisplay.displayHeight/2);
+            Mouse.setCursorPosition(PrepDisplay.displayWidth / 2, PrepDisplay.displayHeight / 2);
+            //Mouse.setCursorPosition(PrepDisplay.displayWidth, PrepDisplay.displayHeight);
 
             CaveGame.getWorld().thePlayer.setEyeY((float) (Math.cos(yAngle * Math.PI / 180)));
             CaveGame.getWorld().thePlayer.setEyeX((float) (Math.sin(yAngle * Math.PI / 180) * Math.cos(zAngle * Math.PI / 180)));
@@ -43,6 +44,12 @@ public class AllMouse
         }
     }
 
+    public static void updateLook()
+    {
+        if(Mouse.isGrabbed())
+        Mouse.setCursorPosition(PrepDisplay.displayWidth / 2, PrepDisplay.displayHeight / 2);
+    }
+
 
 
     static float sprint = 1;
@@ -53,7 +60,6 @@ public class AllMouse
     static int Down0 = 0, Down1 = 0, Down2 = 0, Down3 = 0, Down4 = 0, Down5 = 0;
 
     public static void move() {
-
         moveLength = (int) (System.nanoTime()/10000000 - temp3);
 
         if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
@@ -108,15 +114,15 @@ public class AllMouse
         } else {
             sprint = 0.3f;
         }
+
         if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE) && escDown == 0) {
             escDown = 1;
             if(space2 == 0) {
-                Mouse.setCursorPosition(PrepDisplay.displayWidth/2, PrepDisplay.displayHeight/2);
                 Mouse.setGrabbed(true);
+                Mouse.setCursorPosition(PrepDisplay.displayWidth/2, PrepDisplay.displayHeight/2);
                 space2 = 1;
             } else if(space2 == 1) {
                 Mouse.setGrabbed(false);
-                Mouse.setCursorPosition(PrepDisplay.displayWidth/2, PrepDisplay.displayHeight/2);
                 space2 = 0;
             }
         }

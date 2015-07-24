@@ -4,6 +4,7 @@ import com.cricketcraft.cavegame.CaveGame;
 import com.cricketcraft.cavegame.core.tick.GameTick;
 import com.cricketcraft.cavegame.core.util.MouseUtil;
 import org.lwjgl.LWJGLException;
+import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
@@ -14,14 +15,14 @@ import javax.swing.text.View;
 public class PrepDisplay
 {
     public static int displayWidth = 800;
-    public static int displayHeight = 600;
+    public static int displayHeight = 450;
 
     public static void prepDisplay()
     {
         try {
             DisplayMode prepMode = Display.getDisplayMode();
-            displayHeight = prepMode.getHeight() - 20;
-            displayWidth = prepMode.getWidth() - 20;
+            displayHeight = prepMode.getHeight() - 200;
+            displayWidth = prepMode.getWidth() - 100;
             Display.setDisplayMode(new DisplayMode(displayWidth, displayHeight));
             Display.create();
         } catch (LWJGLException e) {
@@ -61,7 +62,6 @@ public class PrepDisplay
             AllMouse.sky(100);
 
             AllMouse.move();
-            AllMouse.look();
 
             Views.make2D();
 
@@ -69,7 +69,9 @@ public class PrepDisplay
 
             Views.make3D();
 
+            AllMouse.look();
             Display.update();
+            //AllMouse.updateLook();
         }
 
         Display.destroy();
